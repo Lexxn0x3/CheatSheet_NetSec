@@ -78,7 +78,376 @@
   \item \textbf{Symmetric Cryptography:} e.g., block cipher, usually AES
 \end{itemize}
 
+<<<<<<< HEAD
+\subsection{Attacks}
+\begin{itemize}
+  \item Attacks on the record layer
+  \item Attacks on the session key
+  \item Attacks on the private server key
+    \begin{itemize}
+      \item Attacks on implmentations: Timing Attacks, Heratbleed, Invalid Point Attacks
+    \end{itemize}
+  \item Attacks on TLs eco system
+    \begin{itemize}
+      \item Attacks on certificates and the PKI
+      \item Attacks on the browser GUI
+    \end{itemize}
+\end{itemize}
 
+\subsection{Overview TLS 1.0-1.2 \& TLS 1.3}
+\includegraphics[width=0.8\columnwidth]{Resources/tls.png}
+
+\subsection{HKDF Key Derivation Function}
+
+\subsection{Forward Secrecy}
+\begin{itemize}
+  \item TLS 1.3 using certificate-based Authentification: \textbf{forward secrecy}
+  \item TLS 1.3 using pre-shared keys (PSK):
+    \begin{itemize}
+      \item PSK using \textit{elliptic-curve} Diffie-Hellman: \textbf{forward secrecy}
+      \item PSK without EC-DHE (symmetric-only) and zero-round-trip data: \textbf{no forward secrecy}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Datagramm TLS}
+\begin{itemize}
+  \item DTLS is identical to TLS where possible
+  \item DTLS has to introcue new mechanisms
+    \begin{itemize}
+      \item Explicit sequence numbers
+      \item Retransmission timer for handshake message
+      \item Message re-ordering for the handshake
+      \item Fragmentation of large handshake messages into serveral DTLS records
+      \item Optional replay detection
+      \item Invalid records are discarded (silently)
+      \item Denial-of-Service countermeasures: statless cookies, HelloRetryRequest
+    \end{itemize}
+\end{itemize}
+
+\section{Network Layer Security: IPsec}
+\subsection{TLS limitations}
+\begin{itemize}
+  \item Does not protect all traffic between hosts
+    \begin{itemize}
+      \item Protects only a single connection; new connection => new key agreement or session resumption necessary
+      \item Non-TCP traffic (resp. non-UDP trafic for DTLS) cannto be protected
+    \end{itemize}
+  \item Does not protect the TCP layer (RST attacks on TCP are possible which terminate TLS connection)
+  \item Application specific: applications have to be modified to use TLS/DTLS
+  \item Using a TLS-based tunel for VPNs has disadvangates (TCP) (DTLS good option tho)
+\end{itemize}
+
+\subsection{Overview IPsec}
+\begin{itemize}
+  \item Goal: Protect IP packets cryptographically
+    \begin{itemize}
+      \item Confidentiality
+      \item Integrity \& Authenticity
+    \end{itemize}
+  \item Seperation of packet protection from key exchange
+    \begin{itemize}
+      \item Protocols for packet encryption and authentification:
+        symmetric crypto, implemented in the TCP/IP stack
+      \item Key Exchange completly unrelated:
+        asymmetric (+symmetric) crypto, implemented as network daemon
+    \end{itemize}
+\end{itemize}
+\includegraphics[width=\columnwidth]{Resources/ipsec_overview.png}
+
+\subsection{Packet Formats and Operational Modes}
+\subsubsection{Authentification Header (AH)}
+\begin{itemize}
+  \item Integrity \& Authenticity only
+  \item Partially protects "outer" IP header
+    \begin{itemize}
+      \item Variable fields cannot be includes
+        \begin{itemize}
+          \item Flags, Fragment Offset, TTL, Header Checksume
+        \end{itemize}
+      \item Other fields are included in MAC computation
+        \begin{itemize}
+          \item Version, IP header length, total length, identification, Protocol (must be AH), source/dest Address
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+\subsubsection{Encapsulating Security Payload (ESP)}
+\begin{itemize}
+  \item Confidentiality, Integrity \& Authenticity
+  \item Does not protect "outer" IP header
+\end{itemize}
+\includegraphics[width=\columnwidth]{Resources/esp.png}
+\begin{itemize}
+  \item SPI: SA-Identifier
+  \item Next Header: type of payload data (e.g. IPV4)
+  \item Integrity Check Value: data for authentification / integrity protection
+    \begin{itemize}
+      \item Message Authentification Code (MAC)
+    \end{itemize}
+  \item SAs are negotiated in the key exchange
+  \item Sender side: Packet must be categorized to determine which SA applies (By parameters such as destination=)
+  \item Receiver side: Determines SA from IPsec header of received packet
+  \item SA Parameters:
+    \begin{itemize}
+      \item IPsec protocol (AH or ESP)
+      \item Authentification alrogrithm and key
+      \item Encryption algorithm and key
+      \item IPsec mode (transport or tunnel)
+      \item SA lifetimne
+      \item Sequence number: current counter
+      \item On reciver side: "Sliding Window" for replay protection
+    \end{itemize}
+\end{itemize}
+
+\subsection{Scenarios}
+\begin{itemize}
+  \item Host to host
+  \item Host to gateway
+  \item Gateway to gateway
+\end{itemize}
+
+\subsection{The Internet Key Exchange (IKE)}
+\begin{itemize}
+  \item So far, keys are already exchanges, SAs negotiated... but how?
+  \item Authentification of the communication endpoints
+  \item Dynamic negotiation fo algorithms and parameters
+  \item Key establishment
+    \begin{itemize}
+      \item Forward Secrecy
+    \end{itemize}
+  \item Resistance to DoW attacks
+  \item Efficiency (computation, messages, round trips)
+\end{itemize}
+
+\subsection{IKEv1}
+\begin{itemize}
+  \item Phase 1: main mode vs. aggressive mode
+  \item Authentification modes:
+    \begin{itemize}
+      \item Digital Signatures
+      \item Public key encryption(PKE): two variants (rarely used)
+      \item Pre-shared keys(PSK)
+    \end{itemize}
+  \item Phase 2 (quick mode)
+    \begin{itemize}
+      \item With DH (=> forward secrecy)
+      \item Without DH (=> no forward secrecy)
+    \end{itemize}
+\end{itemize}
+\includegraphics[width=\columnwidth]{Resources/ikev1.png}
+
+\subsubsection{Discussion}
+\begin{itemize}
+  \item Complicated
+    \begin{itemize}
+      \item Information from serveral (complex) RFCs required
+      \item Many options variants
+    \end{itemize}
+  \item Gneric
+    \begin{itemize}
+      \item Clean seperation of different phases and functionalities
+        \begin{itemize}
+          \item Can be advantagous in theory, but leads to inefficincies
+        \end{itemize}
+      \item Intended as general handshake and key agreement protocol, not only for IPsec
+        \begin{itemize}
+          \item In practice: only used for IPsec
+        \end{itemize}
+      \item Inneficient
+        \begin{itemize}
+          \item Requires too many round trips
+        \end{itemize}
+      \item Inadequate DoS protection
+        \begin{itemize}
+          \item IKEv1 uses stateful cookies
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{IKEv2}
+\begin{itemize}
+  \item Phase 2 (partially) combindes with Phase 1
+    \begin{itemize}
+      \item More efficient thatn IKEv1
+      \item Initial negotiation of IPsec SA included
+    \end{itemize}
+  \item Additional SAs can be negotiaded in furhter Phase 2 protocol runs
+  \item Simplified specification
+    \begin{itemize}
+      \item Essential information in one RFC
+      \item No distinction main mode vs. aggressive mode
+    \end{itemize}
+  \item DoS protection using statless cookies: optional
+\end{itemize}
+\includegraphics[width=\columnwidth]{Resources/ikev2.png}
+
+\subsection{SA Proposals}
+\begin{itemize}
+  \item Serverl proposals possible
+  \item Proposal contains transforms
+  \item Differnten options for each transform possible
+    \begin{itemize}
+      \item Exactly one transform has to be selected
+    \end{itemize}
+\end{itemize}
+\includegraphics[width=0.7\columnwidth]{Resources/ike_sa_proposal.png}
+
+\section{Security on Layer 2 (MAC Layer, Ethernet)}
+\subsection{Attacks}
+\begin{itemize}
+  \item MAC address spoofing
+  \item ARP spoofing
+  \item ARP cache poisoning
+\end{itemize}
+
+\subsection{Network Access Control}
+\begin{itemize}
+  \item \textbf{Frontend} protocols: Cient -> Network Access Server
+    \begin{itemize}
+      \item Point-to-Point connections: PPP
+      \item LAN: PPPoE, EAPoL
+      \item WLAN: WPA/WPA2/WPA3, EAPoL
+    \end{itemize}
+  \item \textbf{Backend} protocols: Network Access Server --> Authentication Server AAA protocols (Authentication, Authorization, Accounting)
+    \begin{itemize}
+      \item Radius, Diameter
+      \item TACACS+
+    \end{itemize}
+\end{itemize}
+\includegraphics[width=0.6\columnwidth]{Resources/network_access_control.png}
+
+\subsubsection{Radius - Remote Authentification Dial-In User Service}
+\begin{itemize}
+  \item Backend protocol
+  \item Dial-In Server
+    \begin{itemize}
+      \item E.g. DSL
+      \item Company infrastructure
+    \end{itemize}
+\end{itemize}
+\textbf{Packet Format}\\
+\includegraphics[width=0.7\columnwidth]{Resources/radius.png}
+\textbf{Security}\\
+\begin{itemize}
+  \item Old protocol
+    \begin{itemize}
+      \item Tries to protect sesitive data only
+      \item Insecure cryptography
+    \end{itemize}
+  \item Uses only over secure protocols
+    \begin{itemize}
+      \item Usually TLS
+    \end{itemize}
+  \item RADIUS successor: Diameter
+    \begin{itemize}
+      \item Fmore flexible, extensible, application-aware
+      \item "Security" features removed, no more insecure crypto of RADIUS
+        => To be used over secure protocols TLS/DTLS/IPsec
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Point-to-Point Protocol (PPP)}
+\begin{itemize}
+  \item \textbf{PPP: }Frontend protocol to connect two devices
+    \begin{itemize}
+      \item Typically used for dial-up connections (e.g. DSL)
+      \item Transported over Layer 2 protocol (e.g. ethernet)
+    \end{itemize}
+  \item Authentification mechanisms
+    \begin{itemize}
+      \item PAP: username/password
+      \item CHAP: Challange Handshake Authentification Protocol
+      \item EAP: Extensible Authentification Protocol
+    \end{itemize}
+  \item \textbf{PPPoE: }PPP over Ethernet (e.g. used for DSL connections)
+    \begin{itemize}
+      \item Discovery: Client negotiates session with network access server
+      \item PPP Session: PPP frames are encapsulated in ethernet frames; potentially several hops
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Extensible Authentification Protocol (EAP)}
+\begin{itemize}
+  \item Extensible authentification framework
+    \begin{itemize}
+      \item Fronted protocol for lcient authentification
+      \item Server send request (e.g. challenge, ident. request, ..)
+      \item Client responds
+      \item Server sends success or failure message
+      \item EAP messages can be transported in RADIUS messages (as RADIUS attribute) for backend communication
+    \end{itemize}
+  \item EAPoL: EAP over LAN
+\end{itemize}
+
+\subsubsection{Port Based Network Access Control (PNAC)}
+\begin{itemize}
+  \item Authentification of clients befre they can use the network (LAN)
+    \begin{itemize}
+      \item Client connect to the network
+        \begin{itemize}
+          \item Authentification traffic is allowed
+        \end{itemize}
+      \item Switch port can only be used for other purposes after successful authentification
+      \item Re-authentification after timeouts, link-down, etc.
+    \end{itemize}
+  \item PNAC uses EAPoL
+  \item Terminology: Port Access Entities (PAE)
+    \begin{itemize}
+      \item Client: supplicant
+      \item Netowrk access server: authenticator
+      \item Attention: "port"
+    \end{itemize}
+\end{itemize}
+
+\subsection{MACsec}
+\begin{itemize}
+  \item cryptographically protect the ethernet layer
+  \item Based on MACsec Key Agreeement (MKA)
+    \begin{itemize}
+      \item After successful authentification (typically EAP)
+      \item Derives key from CAK - connectivity association key (pre-shared)
+      \item Key can be set up by EAP (e.g. EAP-TLS)
+    \end{itemize}
+\end{itemize}
+ \subsubsection{Frame}
+ \includegraphics[width=0.8\columnwidth]{Resources/macsec_frame.png}
+ \begin{itemize}
+  \item Data cen be encryped and/or authentificated
+  \item AES-GCM is supported
+ \end{itemize}
+ \textbf{Security TAG (SecTAG)}\\
+ \includegraphics[width=0.8\columnwidth]{Resources/sec_tag.png}
+ \begin{itemize}
+  \item TCI: TAG Control Information
+  \item AN: Association Number
+  \item SL: Short Length (payload length; for short frames only)
+  \item PN: Packet Number
+  \item SCI: Secre Channel Identifier (edentify SA, when CA needs ore than 4)
+    \begin{itemize}
+      \item SA is identified by SCI (optional) and AN
+    \end{itemize}
+ \end{itemize}
+ \subsection{Summary}
+\begin{itemize}
+  \item Security on Layer 2 can protect all higher Layer
+    \begin{itemize}
+      \item But: only in same network
+      \item Does nt work accross Layer 3 routers
+    \end{itemize}
+  \item Network Access Control protects access to the network
+    \begin{itemize}
+      \item Client Authentification
+      \item RADIUS/DIAMETER
+      \item EAP
+      \item Port-Based Access Control
+    \end{itemize}
+  \item MACsec protects traffic
+  \begin{itemize}
+    \item Encryption \& authentification
+  \end{itemize}
+\end{itemize}
+=======
+
+>>>>>>> 328d0b696a8c80ef5a2b9ffc250f9c7b9446054c
 \section{Wireless Security}
 \subsection{WiFi Security}
 \subsubsection{Historic Overview}
