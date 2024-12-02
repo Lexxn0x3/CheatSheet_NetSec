@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1732816652.00901 "main.tex" "main.pdf" "main" 1732816652.41578 0
+["pdflatex"] 1732918444.25066 "main.tex" "main.pdf" "main" 1732918444.75091 0
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc" 1276641224 6938 5135be6a8802f13a7faf296d1959a1ab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -34,6 +34,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb" 1136849748 33799 6c8c18c1e1a138641a52c29f0b878445 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb" 1136849748 34869 539b6fed90ef630e9049bc13079bc598 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb" 1136849748 35118 12369bddf1a14581d11fcdbf86619250 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chb8t.pfb" 1377991452 9238 3c516030e42b53cb3fca729a5ac39dc4 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb" 1377991452 9243 502d35497cb43eb13fdc05aa0b9f0ab4 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/mathdesign/mdbch/mdbchb8t.vf" 1377991452 2224 1b7f397f83969596ba27f849a2540080 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/mathdesign/mdbch/mdbchr7t.vf" 1377991452 976 862fa3ae193f69aabcce6a8c0b3499c2 ""
@@ -208,12 +209,12 @@
   "/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty" 1655066402 56148 51a9a8571c07b9921892ae11063ae853 ""
   "/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1655411236 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1721433600 40900 887e0dc8cac988a9e9c574af364cf837 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1730715760.0178 4602016 72a039a3c4aea0fa25b5d35d65138f54 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1731400242 7753174 178bee89a8023218133f77d57eed9207 ""
-  "Content/content.tex" 1732816650.19061 2400 623aa7f4060cf83cb106ec25d62500b3 ""
-  "Resources/GCM-Galois_Counter_Mode_with_IV.svg.png" 1732815999.79353 32827 570972843118b4f43a72567c57fd0c9b ""
-  "main.aux" 1732816652.33965 1997 ac6c87ff5abf994756b8ae246d91c088 "pdflatex"
-  "main.tex" 1732813681.86512 1998 ed55b1b7b87df40277e71ad6c1d40613 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1732912888.11255 4602601 5d02a5c5d52d7237566d144856366042 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1732912689 7753174 9b95deaf2b8076c8c6ca040d5ce7eb1a ""
+  "Content/content.tex" 1732918442.61714 13736 b7bc8e4bfaf71d0b5e4f94b1dd3547da ""
+  "Resources/GCM-Galois_Counter_Mode_with_IV.svg.png" 1732911912.0439 32827 570972843118b4f43a72567c57fd0c9b ""
+  "main.aux" 1732918444.66518 3825 4a088931b2ed4088ba39f5f45994fd85 "pdflatex"
+  "main.tex" 1732911912.0449 1998 ed55b1b7b87df40277e71ad6c1d40613 ""
   (generated)
   "main.aux"
   "main.log"

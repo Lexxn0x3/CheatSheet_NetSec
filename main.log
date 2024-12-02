@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.11.12)  28 NOV 2024 18:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.11.29)  29 NOV 2024 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1266,11 +1266,22 @@ File: Resources/GCM-Galois_Counter_Mode_with_IV.svg.png Graphic file (type png)
 Package pdftex.def Info: Resources/GCM-Galois_Counter_Mode_with_IV.svg.png  use
 d on input line 65.
 (pdftex.def)             Requested size: 97.96858pt x 107.96141pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--130
+
+ []
+
+LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
+(Font)              scaled to size 6.24005pt on input line 188.
 )
 LaTeX Font Info:    Trying to load font information for OT1+mdbch on input line
  76.
-
-(/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/ot1mdbch.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/ot1mdbch.fd
 File: ot1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for OT1/mdbch.
 )
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
@@ -1364,21 +1375,22 @@ LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
 enddocument/afterlastpage: lastpage setting LastPage.
 (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 23248 strings out of 476041
- 442283 string characters out of 5793173
- 1866388 words of memory out of 6000000
- 43171 multiletter control sequences out of 15000+600000
- 551711 words of font info for 92 fonts, out of 8000000 for 9000
+ 23269 strings out of 476041
+ 442594 string characters out of 5793173
+ 1920388 words of memory out of 6000000
+ 43190 multiletter control sequences out of 15000+600000
+ 554385 words of font info for 95 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 84i,14n,89p,422b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,14n,89p,422b,700s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchb8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb>
-Output written on main.pdf (1 page, 75722 bytes).
+re/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chb8t.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb>
+Output written on main.pdf (1 page, 88450 bytes).
 PDF statistics:
- 35 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+ 40 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
