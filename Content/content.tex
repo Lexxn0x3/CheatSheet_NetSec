@@ -748,4 +748,835 @@
 \end{itemize}
 
 \section{Security Mobile Networks}
+\subsection{Overview}
+\begin{itemize}
+    \item[\(\diamond\)] \textbf{First generation:} \emph{analog telephony networks} (voice only)
+    \item[\(\diamond\)] \textbf{2\textsuperscript{nd} generation (2G):} \textcolor{blue}{GSM} \textit{~1990s}
+    \begin{itemize}
+        \item[\(\blacktriangleright\)] Digital, circuit-switched, SIM-based; introduced \textbf{cryptographic protection}
+        \item[\(\blacktriangleright\)] “Generation 2.5”: \textcolor{blue}{GPRS} (packet-switched data traffic)
+        \item[\(\blacktriangleright\)] “Generation 2.75”: \textcolor{blue}{EDGE} (increased bandwidth)
+    \end{itemize}
+    \item[\(\diamond\)] \textbf{3\textsuperscript{rd} generation (3G):} \textcolor{blue}{UMTS} \textit{~2000s}
+    \begin{itemize}
+        \item[\(\blacktriangleright\)] Much higher bandwidth
+        \item[\(\blacktriangleright\)] Improved security: \textbf{mutual authentication}, better crypto algorithms
+        \item[\(\blacktriangleright\)] “Generation 3.5”: \textcolor{blue}{HSDPA/HSUPA} (increased bandwidth)
+    \end{itemize}
+    \item[\(\diamond\)] \textbf{4\textsuperscript{th} generation (4G):} \textcolor{blue}{LTE} \textit{~2010s}
+    \begin{itemize}
+        \item[\(\blacktriangleright\)] Higher bandwidth
+        \item[\(\blacktriangleright\)] Completely new \textbf{IP-based} core network
+        \item[\(\blacktriangleright\)] Changes to security
+    \end{itemize}
+    \item[\(\diamond\)] \textbf{5\textsuperscript{th} generation (5G):} \textit{~2020-?}
+    \begin{itemize}
+        \item[\(\blacktriangleright\)] ... even better, of course ;-) ...
+    \end{itemize}
+\end{itemize}
 
+\subsection{GSM Network}
+\includegraphics[width=0.9\columnwidth]{Resources/gsm.png}\\
+BTS: Base Tranceiver Station\\
+BSC: Base Station Controller\\
+\begin{itemize}
+  \item Circuit-switched network, designed for voice communication
+    \begin{itemize}
+      \item Stable channel between communication partners is reserved
+      \item Seperate channel for signaling (different time slices)
+      \item Slow, expensive
+      \item GSM introduces SMS: small texts can be transferred in signaling channel
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Secuirty}
+\begin{itemize}
+  \item Goal: "At least as secure as a landline"
+  \item Security functions
+    \begin{itemize}
+      \item Autentication and Key Agreement (AKA)
+        \begin{itemize}
+          \item Shared secren in AuC and SIM
+          \item Authentication via challange-response protocol
+          \item "Agreement" on short term session keys for encryption
+        \end{itemize}
+      \item Confidentiality Protection
+        \begin{itemize}
+          \item Encryption of user data ("user plane")
+          \item Encryption of signalling ("control plane")
+        \end{itemize}
+      \item Integrity Protection
+        \begin{itemize}
+          \item Only for signalling
+          \item Often "implicitly" by encryption
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{(U)SIM}
+\begin{itemize}
+    \item \textbf{SIM card} introduced with \textbf{GSM}
+    \begin{itemize}
+        \item \textbf{SIM:} \emph{Subscriber Identity Module}
+        \item \textbf{International mobile subscriber identity (IMSI)}
+        \begin{itemize}
+            \item \emph{Temporary mobile subscriber identity (TMSI):} derived from IMSI
+        \end{itemize}
+        \item \textbf{Security token (smartcard)} of the network operator
+        \begin{itemize}
+            \item Typically implemented on a JavaCard
+            \item Identifies the network subscriber (\emph{“customer”} of the \textbf{MNO})
+            \item Subscriber key \(K_i\) (128 bit)
+        \end{itemize}
+        \item \textbf{Standardized crypto} \(\Rightarrow\) roaming possible
+        \item Independent from mobile equipment (\textbf{ME})
+        \begin{itemize}
+            \item \textbf{International Mobile Equipment Identifier (IMEI)} identifies the device
+            \item SIM can be used with any \textbf{ME} (but: SIM-Lock prevents changing SIM for some devices)
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{USIM: Universal SIM} \(\rightarrow\) \textbf{UMTS} (typically implemented in UICC, together with (GSM-) SIM)
+\end{itemize}
+
+\subsubsection{Crypto Algorithms}
+\begin{itemize}
+    \item \textbf{Authentication: A3}
+    \begin{itemize}
+        \item \emph{Variants: COMP128 (broken)}
+        \item \emph{Later: COMP128-2 (only 54 key bits), COMP128-3 (64 key bits), COMP128-4}
+    \end{itemize}
+
+    \item \textbf{Key Generation: A8}
+    \begin{itemize}
+        \item \emph{Variants: COMP128, COMP128-2, COMP128-3, COMP128-4}
+    \end{itemize}
+
+    \item \textbf{Encryption: A5 (stream cipher)}
+    \begin{itemize}
+        \item \emph{A5/0 (no encryption), A5/1 (broken), A5/2 (weakened version of A5/1)}
+        \item \emph{Later: A5/3 (KASUMI -- also broken)}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Authentication}
+\includegraphics[width=0.9\columnwidth]{Resources/gsm_auth.png} % Adjust width and path
+\begin{itemize}
+    \item The \textbf{Service Network} sends a \textbf{RAND} (random challenge) to the Mobile Equipment (ME).
+    \item The SIM card computes:
+    \begin{itemize}
+        \item \textbf{SRES'}: The signed response, using the authentication algorithm A3 and the subscriber key (\(K_i\)).
+        \item \textbf{\(K_c\)}: The session key for encryption, generated using algorithm A8 and \(K_i\).
+    \end{itemize}
+    \item The \textbf{Authentication Center (AuC)} in the Home Network performs the same computations (using \(K_i\) stored in its database) to generate \textbf{SRES}.
+    \item The network compares the \textbf{SRES'} received from the ME with its own \textbf{SRES}. If they match, authentication is successful.
+    \item Communication is encrypted using the generated \textbf{\(K_c\)} and the A5 stream cipher.
+\end{itemize}
+\textbf{Glossary:}
+\begin{itemize}
+    \item \textbf{IMSI:} International Mobile Subscriber Identity, a unique identifier for the subscriber.
+    \item \textbf{TMSI:} Temporary Mobile Subscriber Identity, a pseudonym for the IMSI used for privacy.
+    \item \textbf{\(K_i\):} Subscriber key, stored on the SIM and at the network's Authentication Center.
+    \item \textbf{PRNG:} Pseudo-Random Number Generator, used to generate the RAND challenge.
+\end{itemize}
+
+\subsubsection{IMSI Catcher}
+\begin{itemize}
+    \item \textbf{Man-in-the-Middle attack:}
+    \begin{itemize}
+        \item \textbf{IMSI Catcher:} A device (e.g., “Stingray”) impersonates a legitimate Base Station to intercept communications.
+        \item \textbf{Step-by-step process:}
+        \begin{itemize}
+            \item The IMSI catcher pretends to be a Base Station with a strong signal, forcing nearby mobile devices to connect.
+            \item The mobile device sends its IMSI (International Mobile Subscriber Identity) to the catcher for authentication.
+            \item The IMSI catcher forwards authentication requests to the real Base Station, acting as a mobile phone.
+            \item Once connected, the IMSI catcher can:
+            \begin{itemize}
+                \item Intercept data and voice traffic.
+                \item Disable encryption by negotiating an unencrypted or weaker cipher mode.
+                \item Track users by capturing their IMSI or location data.
+            \end{itemize}
+        \end{itemize}
+        \item This method exploits the lack of mutual authentication in GSM networks (i.e., the mobile phone does not verify the Base Station's authenticity).
+    \end{itemize}
+\end{itemize}
+
+\subsection{UMTS}
+\subsubsection{Security Improvements}
+\begin{itemize}
+    \item \textbf{3GPP} (\emph{3rd Generation Partnership Project})
+    \begin{itemize}
+        \item Responsible for specifications, including issuing \emph{5G standards}.
+    \end{itemize}
+    \item \textbf{“Old” GSM SIM cards} can still be used:
+    \begin{itemize}
+        \item Backwards compatibility supports GSM authentication protocols.
+    \end{itemize}
+    \item \textbf{Circuit and Packet Switching:} Both methods available for communication.
+    \item \textbf{Improved Crypto:}
+    \begin{itemize}
+        \item \emph{3GPP publishes cryptographic algorithms.}
+        \item Encryption is applied \textbf{not only on the air}, enhancing security.
+    \end{itemize}
+    \item \textbf{New Encryption Algorithms:}
+    \begin{itemize}
+        \item Initially introduced \textbf{KASUMI}, used for encryption and CBC-MAC.
+        \item Later replaced by more secure algorithms, as \textbf{KASUMI was broken}.
+    \end{itemize}
+    \item \textbf{Mutual Authentication:} 
+    \begin{itemize}
+        \item \emph{Both user and network authenticate each other (not mandatory).}
+    \end{itemize}
+    \item \textbf{Main Problems:}
+    \begin{itemize}
+        \item Backwards compatibility creates vulnerabilities.
+        \item \emph{Fallback to GSM weakens overall security.}
+    \end{itemize}
+\end{itemize}
+
+\subsection{LTE- Long Term Evolution}
+\includegraphics[width=1\columnwidth]{Resources/lte.png}
+\includegraphics[width=1\columnwidth]{Resources/lte2.png}
+
+\subsubsection{Protocol Stack}
+\subsubsection{LTE Protocol Stack}
+\includegraphics[width=0.3\columnwidth]{Resources/lte_protocols.png} % Adjust width and path
+\begin{itemize}
+    \item \textbf{Control Plane:}
+    \begin{itemize}
+        \item Handles signaling, network resource management, and routing.
+        \item Ensures communication setup and maintenance.
+    \end{itemize}
+    \item \textbf{User Plane:}
+    \begin{itemize}
+        \item Responsible for transferring user data (e.g., voice, video, and application data).
+        \item Integrates directly with applications via the TCP/IP stack.
+    \end{itemize}
+    \item \textbf{Key Protocols (Cellular Stack):}
+    \begin{itemize}
+        \item \textbf{NAS (Non-Access Stratum):}
+        \begin{itemize}
+            \item Manages mobility and session-related signaling between the UE and the core network (e.g., authentication, location updates).
+        \end{itemize}
+        \item \textbf{RRC (Radio Resource Control):}
+        \begin{itemize}
+            \item Handles signaling at the radio level, such as connection setup, handovers, and state management.
+        \end{itemize}
+        \item \textbf{PDCP (Packet Data Convergence Protocol):}
+        \begin{itemize}
+            \item Provides header compression, encryption, and integrity protection for user and control plane data.
+        \end{itemize}
+        \item \textbf{RLC (Radio Link Control):}
+        \begin{itemize}
+            \item Ensures data reliability through retransmissions and error correction.
+        \end{itemize}
+        \item \textbf{MAC (Medium Access Control):}
+        \begin{itemize}
+            \item Manages resource allocation and data multiplexing for multiple UEs.
+        \end{itemize}
+        \item \textbf{PHY (Physical Layer):}
+        \begin{itemize}
+            \item Deals with the actual transmission of radio signals over the air interface.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Integration with Applications:}
+    \begin{itemize}
+        \item The LTE stack works alongside the TCP/IP stack for application-level data transfer:
+        \begin{itemize}
+            \item Application protocols (e.g., HTTP, VoIP) run on top of \textbf{TCP/UDP}.
+            \item \textbf{IP} ensures routing and addressing across networks.
+            \item PDCP compresses and encrypts packets before passing them to the lower layers for radio transmission.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+\subsubsection{Authentication}
+\includegraphics[width=0.8\columnwidth]{Resources/lte_auth.png} 
+\begin{itemize}
+    \item \textbf{Authentication Process:}
+    \begin{itemize}
+        \item The \textbf{Home Network} sends a random challenge (\textbf{RAND}), an authentication token (\textbf{AUTN}), and a sequence number (\textbf{SQN}) to the \textbf{Mobile Equipment (ME)}.
+        \item The \textbf{SIM card} in the ME uses the \textbf{subscriber key (\(K_i\))} and predefined functions (\(f1, f2, \ldots, f5\)) to compute:
+        \begin{itemize}
+            \item \textbf{SRES':} Signed response for authentication.
+            \item \textbf{CK:} Cipher key for encryption.
+            \item \textbf{IK:} Integrity key for data integrity.
+        \end{itemize}
+        \item The \textbf{ME} sends \textbf{SRES'} back to the network for verification.
+        \item If \textbf{SRES'} matches the expected \textbf{SRES}, authentication is successful, and encrypted communication begins.
+    \end{itemize}
+
+    \item \textbf{Acronyms:}
+    \begin{itemize}
+        \item \textbf{RAND:} Random number used for the challenge.
+        \item \textbf{AUTN:} Authentication token, includes a MAC (Message Authentication Code).
+        \item \textbf{SQN:} Sequence number for replay protection.
+        \item \textbf{\(K_i\):} Subscriber key shared between SIM and the Home Network.
+        \item \textbf{CK:} Cipher key, used for encrypting data.
+        \item \textbf{IK:} Integrity key, used for ensuring data integrity.
+        \item \textbf{K\(_{\text{ASME}}\):} Key derived from \textbf{CK} and \textbf{IK}, used for session management.
+    \end{itemize}
+
+    \item \textbf{Security Features:}
+    \begin{itemize}
+        \item Protects against replay attacks using \textbf{SQN}.
+        \item Ensures mutual authentication with \textbf{AUTN} and \textbf{SRES}.
+        \item Enables encrypted communication using \textbf{CK}.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Crypto Algorithms}
+\begin{itemize}
+    \item \textbf{Authentication Algorithms:}
+    \begin{itemize}
+        \item \(f1, f2\): Message Authentication Codes (MACs), inherited from UMTS.
+        \item Operator-specific (\textbf{MNO-dependent}); 3GPP recommends AES-based algorithms.
+    \end{itemize}
+
+    \item \textbf{Key Generation Algorithms (Key Derivation):}
+    \begin{itemize}
+        \item \(f3, f4, f5\): Used for deriving keys (e.g., \(K_c, K_i\)), also inherited from UMTS.
+        \item Operator-specific (\textbf{MNO-dependent}); 3GPP recommends AES-based algorithms.
+    \end{itemize}
+
+    \item \textbf{Encryption Algorithms:}
+    \begin{itemize}
+        \item \textbf{EEA0:} "Null cipher" (no encryption).
+        \item \textbf{128-EEA1:} SNOW 3G (stream cipher).
+        \item \textbf{128-EEA2:} AES-based encryption algorithm (strong and widely used).
+        \item \textbf{128-EEA3:} ZUC (Chinese stream cipher).
+    \end{itemize}
+
+    \item \textbf{Integrity Algorithms (EIA):}
+    \begin{itemize}
+        \item Similar to encryption, used to ensure data integrity during transmission.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Privacy}
+\begin{itemize}
+    \item \textbf{Fact:} Mobile Network Operators (MNOs) can always track their users (this is by design).
+    \item \textbf{Additional Problem:} Eavesdropping on radio communication.
+    \begin{itemize}
+        \item \textbf{IMSI:} A unique identifier for a user:
+        \begin{itemize}
+            \item \textbf{GSM:} Used by the UE only when no \textbf{TMSI} is available.
+            \item \textbf{LTE:} \textbf{IMSI} replaced by \textbf{GUTI} (Globally Unique Temporary Identifier).
+        \end{itemize}
+        \item \textbf{TMSI/GUTI}:
+        \begin{itemize}
+            \item Can (and should) be \textbf{updated frequently} to avoid tracking by third parties.
+            \item Changes must be \textbf{unpredictable} to prevent tracking or identification.
+        \end{itemize}
+        \item Research findings:
+        \begin{itemize}
+            \item 19 out of 28 MNOs used \textbf{very simple, predictable patterns}, such as monotonic counters.
+            \item Earlier research found \textbf{no or very rare changes}, allowing tracking.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{LTE Proximity Services (ProSe)}
+\includegraphics[width=0.7\columnwidth]{Resources/prose.png} 
+\begin{itemize}
+    \item \textbf{ProSe:} Cellular Device-to-Device (D2D) Communication
+    \begin{itemize}
+        \item Enables communication between devices directly, bypassing base stations.
+        \item Can operate \textbf{with or without network coverage.}
+        \item Commonly used in \textbf{public safety networks}, such as emergencies or disasters.
+        \item \textbf{Applications:}
+        \begin{itemize}
+            \item Peer-to-peer applications.
+            \item Location-based services.
+            \item Range extension through device relays.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Control Modes:}\\
+    \includegraphics[width=0.5\columnwidth]{Resources/prose2.png} 
+    \begin{itemize}
+        \item \textbf{Network-Controlled Mode:}
+        \begin{itemize}
+            \item ProSe communication is managed via the LTE network for reliability and resource allocation.
+        \end{itemize}
+        \item \textbf{Cluster Head Mode:}
+        \begin{itemize}
+            \item A device (cluster head) acts as a local coordinator for nearby devices.
+            \item Manages intra-cluster communication and relays data to the LTE network or other clusters.
+        \end{itemize}
+        \item \textbf{Ad Hoc Mode:}
+        \begin{itemize}
+            \item Devices communicate directly without centralized control.
+            \item Suitable for completely out-of-coverage scenarios.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Key Management:}
+    \begin{itemize}
+        \item \textbf{Authorization:} User Equipment (UE) must be authorized unless pre-configured on the USIM.
+        \item \textbf{MIKEY (Multimedia Internet Keying):}
+        \begin{itemize}
+            \item Used for VoIP key exchange.
+            \item Supports different modes (e.g., pre-shared keys or PKI-based).
+        \end{itemize}
+        \item \textbf{Key Hierarchy:}
+        \begin{itemize}
+            \item ProSe MIKEY Key (PMK) → Temporary ProSe Group Key (PGK).
+            \item PGK → ProSe Traffic Key (PTK) → ProSe Encryption Key (PEK).
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{5G: The 5\textsuperscript{th} Generation Mobile Network}
+\begin{itemize}
+    \item \textbf{5G:} Represents the next and current generation of mobile networks.
+    \item \textbf{Deployment:} Has already started, though some specifications are still evolving.
+    \item \textbf{Performance:} 
+    \begin{itemize}
+        \item Much faster than 4G.
+        \item Provides significantly lower latency and higher reliability.
+    \end{itemize}
+    \item \textbf{Advancements:}
+    \begin{itemize}
+        \item Builds on software-defined networking principles, initiated with LTE.
+        \item Includes advanced \textbf{Quality-of-Service (QoS)} features.
+    \end{itemize}
+    \item \textbf{New Application Scenarios:}
+    \begin{itemize}
+        \item \textbf{Industry 4.0:} Automation and IoT for manufacturing and logistics.
+        \item \textbf{Device-to-Device Communication:} Key for vehicular networks and ProSe.
+        \item \textbf{Private Networks:} Operated by non-traditional operators, such as manufacturing industries.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{5G Security: Relevant Entities (Functions)}
+\begin{itemize}
+    \item \textbf{AMF (Access and Mobility Management Function):} 
+    Manages device access and mobility in the Serving Network.
+
+    \item \textbf{SEAF (Security Anchor Functionality):} 
+    Handles initial authentication and acts as the anchor point for security in the Serving Network.
+
+    \item \textbf{AUSF (Authentication Server Function):} 
+    Processes authentication in the Home Network, replacing the HSS from LTE.
+
+    \item \textbf{ARPF (Authentication Credential Repository and Processing Function):} 
+    Stores and processes authentication keys, like the AuC in LTE.
+
+    \item \textbf{SEPP (Security Edge Protection Proxy):} 
+    Secures inter-operator communication (e.g., roaming) by protecting signaling messages exchanged between networks.\\
+    \\
+\end{itemize}
+\begin{itemize}
+    \item \textbf{IMSI → SUPI (Subscription Permanent Identifier):}
+    \begin{itemize}
+        \item \textbf{SUPI:} Replaces IMSI and is never transmitted unencrypted over the air.
+        \item \textbf{SUCI (Subscription Concealed Identifier):}
+        \begin{itemize}
+            \item SUPI is encrypted using the network's public key to create SUCI for secure transmission.
+        \end{itemize}
+        \item \textbf{TMSI → 5G-S-TMSI:} Mandatory to change after paging (e.g., during basestation handover).
+        \item \textbf{GUTI → 5G-GUTI:} Requirements for dynamic GUTI changes to improve privacy.
+    \end{itemize}
+
+    \item \textbf{Authentication (AKA):}
+    \begin{itemize}
+        \item Protocol improvements to better protect security features and enhance user privacy.
+    \end{itemize}
+
+    \item \textbf{IMSI Catcher Detection:}
+    \begin{itemize}
+        \item \textbf{Measurement Reports:} Enable network-based and UE-assisted detection.
+        \item Makes IMSI/SUCI catchers harder to deploy without being detected.
+    \end{itemize}
+
+    \item \textbf{Security in 5G Standalone Mode:}
+    \begin{itemize}
+        \item Many advanced features are available only in 5G "Standalone" mode.
+        \item Current usage is mainly \textbf{5G NSA (Non-Standalone)} for cooperation with 4G (LTE).
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Authentication and Key Agreement}
+\begin{itemize}
+    \item \textbf{Authentication Options:}
+    \begin{itemize}
+        \item \textbf{EAP-AKA'}:
+        \begin{itemize}
+            \item Defined in RFC5448.
+            \item Based on pre-shared keys.
+            \item Fits into the EAP (Extensible Authentication Protocol) framework.
+        \end{itemize}
+        \item \textbf{5G AKA}:
+        \begin{itemize}
+            \item Derived from LTE AKA for backward compatibility.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Privacy Concerns:}
+    \begin{itemize}
+        \item Flaws in 5G AKA found via formal protocol analysis:
+        \begin{itemize}
+            \item \textit{David Basin et al., "A Formal Analysis of 5G Authentication", ACM CCS 2018}.
+        \end{itemize}
+        \item Practical attacks require targeting specific users:
+        \begin{itemize}
+            \item \textit{Chlosta, Rupprecht, Pöpper, Holz, "5G SUCI-Catchers: Still catching them all?", ACM WiSec 2021}.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Service-Based Interfaces}
+\begin{itemize}
+    \item \textbf{Network Operators and 3rd Parties Offering "Services":}
+    \begin{itemize}
+        \item \textbf{Network Functions (NF):} Core network features exposed as services.
+        \item \textbf{Other Services:} Additional functionalities provided by the network.
+        \item \textbf{TLS Support:} Ensures secure communication between entities.
+        \item \textbf{OAuth 2.0-based Authorization:} Allows secure access control using access tokens.
+    \end{itemize}
+
+    \item \textbf{Network Slices:}
+    \begin{itemize}
+        \item Provides virtualized and isolated network partitions with specific \textbf{QoS (Quality of Service)} properties.
+        \item Uses \textbf{EAP-based Authorization} for access control.
+    \end{itemize}
+\end{itemize}
+
+\section{Firewalls, Intrusion Detection and Prevention}
+\subsection{Firewalls}
+\begin{itemize}
+  \item Firewalls separate networks
+    \begin{itemize}
+      \item Restricts traffic: enforces policy
+      \item Logging
+      \item Implemented in SW and/or HW)
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Packet Filtering}
+\begin{itemize}
+    \item \textbf{Packet filtering firewalls:}
+    \begin{itemize}
+        \item Policies defined by filtering rules (source, destination, port, protocol, etc.).
+        \item Rules decide actions: accept, block, log, or modify packets.
+        \item Advanced filters can modify packets (e.g., NAT or port translation).
+    \end{itemize}
+
+    \item \textbf{Advantages:}
+    \begin{itemize}
+        \item Cheap, widely available, and efficient.
+        \item Examples: Linux \texttt{netfilter}, Windows firewall.
+        \item Simple implementation; no modification to applications required.
+    \end{itemize}
+
+    \item \textbf{Limitations:}
+    \begin{itemize}
+        \item Susceptible to IP and port spoofing attacks.
+        \item Rules limited to individual packets and lack comprehensive state awareness.
+        \item Cannot enforce application-specific filtering; lacks deeper protocol knowledge.
+        \item Usually not capable of rejecting specific packets within a particular application session.
+    \end{itemize}
+
+    \item \textbf{Niche Aspects:}
+    \begin{itemize}
+        \item Filters can reject IP spoofing by blocking packets from internal addresses arriving at external interfaces.
+        \item Access control by ports can restrict services to specific source addresses (e.g., SMTP limited to internal IPs).
+        \item Can filter based on packet type (TCP, UDP) or flags (e.g., SYN for connection establishment).
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Connection Tracking and Stateful Firewalls}
+\begin{itemize}
+    \item \textbf{Connection Tracking:}
+    \begin{itemize}
+        \item Tracks packets belonging to the same logical "connection" (not limited to TCP).
+        \item Examples:
+        \begin{itemize}
+            \item UDP-based connections (e.g., DTLS).
+            \item DNS requests/responses and ICMP echo/replies.
+        \end{itemize}
+        \item Supports protocols with separate control and data connections (e.g., active FTP).
+        \item Enables NAT functionality by rewriting addresses for complex protocols.
+    \end{itemize}
+    
+    \item \textbf{Stateful Firewalls:}
+    \begin{itemize}
+        \item Maintain state information about active connections.
+        \item Rules can dynamically adapt based on connection states (e.g., allow replies to outgoing requests).
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Linux Firewall: Netfilter}
+Netfilter, part of the Linux kernel, is a framework for packet filtering and network address translation (NAT). It operates using a series of hooks in the network stack where rules, organized into \textbf{tables} and \textbf{chains}, are applied.
+\paragraph{Chains and Their Functions:}
+\begin{itemize}
+    \item \textbf{Input Chain:} Handles packets destined for the local system (e.g., filtering SSH traffic).
+    \item \textbf{Output Chain:} Manages packets generated locally and leaving the system (e.g., limiting outgoing ICMP traffic).
+    \item \textbf{Forward Chain:} Processes packets passing through the system but not destined for it (e.g., traffic routing in a gateway).
+    \item \textbf{Prerouting Chain:} Alters incoming packets before routing decisions (e.g., DNAT for port redirection).
+    \item \textbf{Postrouting Chain:} Alters outgoing packets after routing decisions (e.g., SNAT for source IP modification).
+\end{itemize}
+\paragraph{Key Components:}
+\begin{itemize}
+    \item \textbf{Tables:} Contain chains for specific tasks:
+    \begin{itemize}
+        \item \textbf{Filter Table:} Default table for packet filtering (Input, Output, Forward chains).
+        \item \textbf{NAT Table:} Used for network address translation (Prerouting, Postrouting chains).
+        \item \textbf{Mangle Table:} For modifying packet headers.
+    \end{itemize}
+    \item \textbf{Tools:}
+    \begin{itemize}
+        \item \texttt{iptables}: Legacy tool for managing rules.
+        \item \texttt{nftables}: Modern replacement offering simplified syntax and better performance.
+    \end{itemize}
+\end{itemize}
+\paragraph{Use Case Example:}
+A packet enters the system through the \textbf{Prerouting Chain}, is routed to the appropriate interface (via \textbf{Forward Chain} if being forwarded or \textbf{Input Chain} if destined locally), and exits through the \textbf{Postrouting Chain} after necessary modifications.
+Netfilter’s modularity and flexibility make it a powerful tool for managing network traffic.
+
+\subsubsection{Application-Level Gateways}
+An \textbf{Application-Level Gateway (ALG)} acts as an intermediary between clients and applications, offering fine-grained control and monitoring of traffic specific to application protocols. It provides a specialized interface tailored for applications, such as SMTP or HTTP, allowing for filtering, logging, and user profiling at the application layer.
+\paragraph{Functionality:}
+\begin{itemize}
+    \item \textbf{Connection Handling:} Clients connect to the gateway, which filters and analyzes the traffic before forwarding it to the application server.
+    \item \textbf{Protocol Awareness:} Equipped with detailed knowledge of application-specific protocols, enabling in-depth traffic inspection and filtering.
+    \item \textbf{State Management:} Tracks the state of connections or application data to enforce security or logging policies effectively.
+\end{itemize}
+\begin{itemize}
+    \item In-depth analysis and traffic filtering based on application logic.
+    \item Enables user profiling, attack detection, and intrusion prevention.
+    \item Provides application-specific caching and potential for secure communication.
+    \item App extensions for additional features, such as authentication, without modifying the original application.
+\end{itemize}
+\paragraph{Limitations:}
+\begin{itemize}
+    \item \textbf{Performance Overhead:} The inspection and filtering process can reduce throughput.
+    \item \textbf{Maintenance Effort:} Requires frequent updates to stay compatible with evolving application protocols.
+    \item \textbf{Limited Scope:} Only supports predefined applications, limiting flexibility in heterogeneous environments.
+\end{itemize}
+\paragraph{Use Case:}
+ALGs are frequently employed in enterprise environments for managing email servers (e.g., SMTP gateways) or for secure access to critical applications by acting as a filter and logging interface for external traffic.
+
+\subsubsection{Proxy Firewalls}
+Proxy firewalls act as a generic proxy on the transport layer, enabling advanced traffic control and enhancing communication security.
+\paragraph{Key Features:}
+\begin{itemize}
+    \item \textbf{Connection State Tracking:} Monitors and manages the state of connections.
+    \item \textbf{Authentication and Security:} Adds user authentication and communication security.
+    \begin{itemize}
+        \item Frequently used in corporate environments:
+        \begin{itemize}
+            \item Outgoing traffic is routed only via the proxy.
+            \item User authentication is required before access.
+            \item Only specific ports or applications are allowed.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Flexibility:} Can extend functionality toward application-level filtering (e.g., web proxies or caches).
+\end{itemize}
+\paragraph{Comparison to Application-Level Gateways:}
+\begin{itemize}
+    \item Proxy firewalls are more general than application-level gateways.
+    \item The distinction between proxy firewalls and application gateways is not always clear.
+\end{itemize}
+
+\subsubsection*{Firewall Architectures: Dual-Homed Firewall vs. DMZ}
+\begin{itemize}
+    \item \textbf{Dual-Homed Firewall:}\\
+    \includegraphics[width=0.7\columnwidth]{Resources/dual-homed.png} 
+    \begin{itemize}
+        \item \textit{Concept:} Firewall with two interfaces separating internal and external networks.
+        \item \textit{Operation:} Traffic flows through the firewall, using packet filters or proxies for mediation.
+        \item \textit{Advantages:}
+        \begin{itemize}
+            \item Strong physical isolation.
+            \item Centralized traffic control.
+            \item Flexible integration of security mechanisms.
+        \end{itemize}
+        \item \textit{Disadvantages:}
+        \begin{itemize}
+            \item Requires additional hardware resources.
+            \item Limited scalability for complex networks.
+        \end{itemize}
+        \item \textit{Use Cases:} Suitable for small/medium networks needing strict isolation.
+    \end{itemize}
+
+    \item \textbf{Demilitarized Zone (DMZ):}\\
+    \includegraphics[width=0.8\columnwidth]{Resources/dmz.png} 
+    \begin{itemize}
+        \item \textit{Concept:} Segregated network zone for public-facing services (e.g., web servers).
+        \item \textit{Operation:} Packet filters manage traffic to/from DMZ, preventing direct internal access.
+        \item \textit{Advantages:}
+        \begin{itemize}
+            \item Protects internal networks from compromised public-facing services.
+            \item Granular traffic control for specific services.
+            \item Limits exposure of internal systems.
+        \end{itemize}
+        \item \textit{Disadvantages:}
+        \begin{itemize}
+            \item Adds configuration and maintenance complexity.
+        \end{itemize}
+        \item \textit{Use Cases:} Ideal for hosting public services (e.g., web hosting, e-commerce).
+    \end{itemize}
+
+    \item \textbf{Key Differences:}
+    \begin{itemize}
+        \item Dual-Homed focuses on isolation, while DMZ separates public services from internal systems.
+        \item DMZ adds a dedicated network segment for external-facing servers.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Intrusion Detection and Prevention System (IDPS)}
+\begin{itemize}
+    \item \textbf{Intrusion Detection Systems (IDSs):}
+    \begin{itemize}
+        \item Detect attempts to attack or intrusions.
+        \item Focused on monitoring and logging suspicious activities.
+    \end{itemize}
+    \item \textbf{Prevention:}
+    \begin{itemize}
+        \item React to detected intrusions to prevent successful attacks.
+        \item Goal: Stop attacks in progress by blocking or responding.
+    \end{itemize}
+    \item \textbf{IDPS = IDS + Prevention:} Combines detection and prevention to ensure proactive and reactive defense mechanisms.
+    \item \textbf{Historical Work:}
+    \begin{itemize}
+        \item James Anderson: \emph{Computer Security Threat Monitoring and Surveillance} (1980).
+        \item Dorothy Denning: \emph{An Intrusion Detection Model} (1987).
+    \end{itemize}
+\end{itemize}
+\paragraph{Why Use IDPS?}
+\begin{itemize}
+    \item Identify incidents effectively.
+    \item Support incident response to minimize damage.
+    \item Identify gaps in security policy and practices.
+    \item Deter insiders from violating policies.
+\end{itemize}
+
+\subsubsection{IDPS Functionality (High-Level)}
+\begin{itemize}
+    \item \textbf{Record Events:}
+    \begin{itemize}
+        \item Logging and accounting for detected activities.
+        \item Observations useful for detecting and analyzing incidents.
+        \item Integration with Security Information and Event Management (SIEM) systems.
+    \end{itemize}
+    \item \textbf{Notify Administrators:}
+    \begin{itemize}
+        \item Alert administrators to take appropriate action.
+    \end{itemize}
+    \item \textbf{Produce Reports:}
+    \begin{itemize}
+        \item Summarize activities and detected threats for analysis.
+    \end{itemize}
+    \item \textbf{Automated First-Level Reaction:}
+    \begin{itemize}
+        \item Stop attacks or intrusion attempts automatically.
+        \item Dynamically change the security environment, e.g., reconfigure firewalls.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Intrusion Detection Model (Denning, 1987)}
+\begin{itemize}
+    \item \textbf{Components:}
+    \begin{itemize}
+        \item \textbf{Subjects:} Entities initiating actions.
+        \item \textbf{Objects:} Resources being accessed or affected.
+        \item \textbf{Audit Records:} Logs of subject actions for monitoring.
+        \item \textbf{Profiles:} Behavioral characterizations based on metrics.
+        \item \textbf{Anomaly Records:} Highlight abnormal activities.
+        \item \textbf{Activity Rules:} Define responses to anomalies (e.g., profile updates, intrusion reporting).
+    \end{itemize}
+    \item \textbf{Metrics:}
+    \begin{itemize}
+        \item Event Counters
+        \item Interval Timers
+        \item Resource Measures
+    \end{itemize}
+    \item \textbf{Models:}
+    \begin{itemize}
+        \item \textbf{Statistical Models:} Identify statistical anomalies.
+        \begin{itemize}
+            \item Mean and Standard Deviation Model
+            \item Multivariate Correlation Model
+            \item Markov Process Model
+            \item Time Series Model
+        \end{itemize}
+        \item \textbf{Operational Models:} Compare metrics against predefined thresholds.
+        \item \textbf{Modern Approaches:} Incorporate Machine Learning/AI for advanced anomaly detection.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Types of IDPS}
+\begin{itemize}
+    \item \textbf{Network-Based Intrusion Detection System (NIDS):}
+    \begin{itemize}
+        \item Monitors and analyzes network traffic.
+        \item Often integrated with firewalls (tightly or loosely).
+        \item Includes specialized Wireless IDPS for wireless networks.
+        \item Incorporates Network Behavior Analysis (NBA) for deeper traffic insights.
+    \end{itemize}
+    \item \textbf{Host-Based Intrusion Detection System (HIDS):}
+    \begin{itemize}
+        \item Monitors activity on a specific host (server or end-user device).
+        \item Analyzes system and application logs, network activity, running processes, and system calls.
+        \item Tracks file accesses and configuration changes for anomaly detection.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{IDPS Architecture}
+\begin{itemize}
+    \item \textbf{Sensors (Agents):} Monitor and analyze activity.
+    \item \textbf{IDPS Management Server:} Collects information from sensors and manages them.
+    \item \textbf{Database:} Serves as a repository for audit records.
+    \item \textbf{Admin Console:} Provides a user interface for administrators.
+\end{itemize}
+
+\subsubsection{Detection Methodologies: Categorization}
+\begin{itemize}
+    \item \textbf{Signature-Based Intrusion Detection}
+    \begin{itemize}
+        \item Uses fixed patterns to identify \textit{known threats} (e.g., hash values of malware).
+        \item Limited to known threats and can be evaded by intelligent attackers.
+    \end{itemize}
+    \item \textbf{Anomaly-Based Intrusion Detection}
+    \begin{itemize}
+        \item Detects previously unknown threats by modeling normal/abnormal behavior.
+        \item Requires a \textit{training/learning phase} for data collection and profiling.
+        \item Often uses Machine Learning or AI; main focus of current research.
+    \end{itemize}
+    \item \textbf{Specification-Based Intrusion Detection (Stateful Protocol Analysis)}
+    \begin{itemize}
+        \item Compares observations to models/specifications of legitimate behavior.
+        \item Can be integrated into application-level gateways.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Summary}
+\begin{itemize}
+    \item \textbf{Firewalls}
+    \begin{itemize}
+        \item Essential building block for network security.
+        \item Alone cannot effectively prevent attacks.
+        \item Various types:
+        \begin{itemize}
+            \item Packet filters.
+            \item Application-level gateways/proxies.
+        \end{itemize}
+        \item Example: Linux firewall (netfilter, iptables/nftables).
+    \end{itemize}
+    \item \textbf{Intrusion Detection and Prevention Systems (IDPS)}
+    \begin{itemize}
+        \item Detect and prevent intrusion attempts.
+        \item Types:
+        \begin{itemize}
+            \item Host-based vs. Network-based IDPS.
+        \end{itemize}
+        \item Detection methodologies:
+        \begin{itemize}
+            \item Signature-based.
+            \item Behavior-based (e.g., anomaly detection).
+        \end{itemize}
+        \item Specialized IDPS for specific systems (e.g., industrial automation, vehicle networks).
+    \end{itemize}
+\end{itemize}
+
+\section{Border Gateway Protocol (BGP), Domain Name System (DNS)}
