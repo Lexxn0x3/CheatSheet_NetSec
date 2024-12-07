@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1733591121.77552 "main.xdv" "main.pdf" "main" 1733591123.34294 0
-  "main.xdv" 1733591121.59119 101300 ba3a1fb5dc843a45a0d02dab7dbbf1df "xelatex"
+["xdvipdfmx"] 1733593525.75066 "main.xdv" "main.pdf" "main" 1733593527.43833 0
+  "main.xdv" 1733593525.5899 127532 89847c0fefbf0f9106120b56bf5372ca "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1733591120.65796 "main.tex" "main.xdv" "main" 1733591123.33972 0
+["xelatex"] 1733593524.6329 "main.tex" "main.xdv" "main" 1733593527.43519 0
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -192,9 +192,12 @@
   "/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1655411236 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1721433600 40900 887e0dc8cac988a9e9c574af364cf837 ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1733569825 11126941 f45d267b4f72000e8aeb0cbfce16e082 ""
-  "Content/content.tex" 1733591119.09209 66562 5a606d9d8af4ce3d3ca459247224e08a ""
+  "Content/content.tex" 1733593522.37778 84705 62bc92458170994ab16136c3866588d4 ""
   "Resources/GCM-Galois_Counter_Mode_with_IV.svg.png" 1733567961.18396 32827 570972843118b4f43a72567c57fd0c9b ""
   "Resources/dmz.png" 1733590491.52215 97842 26574d27f573e846047568b6650a75a0 ""
+  "Resources/dns_poison1.png" 1733592470.71342 53641 6dae7d4c2880309668242fa8ae969b06 ""
+  "Resources/dns_poison2.png" 1733592501.88856 57746 d383779eb211b1363a0ca8cb3824aaa9 ""
+  "Resources/dnssec.png" 1733593164.89773 97422 52c51d26ac505849109289d0c4dec294 ""
   "Resources/dual-homed.png" 1733590467.65628 77749 048491dc9ecc8ea1ea98bac79ec98dab ""
   "Resources/esp.png" 1733584116.1559 47859 0cfb32804f3666c0eca040b05b7046c2 ""
   "Resources/gsm.png" 1733585118.06257 122817 878fe83352401daa31b65b28ce1084a6 ""
@@ -203,6 +206,7 @@
   "Resources/ikev1.png" 1733584206.76922 153672 ba6912c5e15dcbfb47b9913db39f655d ""
   "Resources/ikev2.png" 1733584252.41089 147643 cd151fdb1f3d9f5325026d852d1a7a9a ""
   "Resources/ipsec_overview.png" 1733584081.66264 64505 58a26fc84f09c87dc4dee613338b5d6e ""
+  "Resources/kaminsky.png" 1733592708.29908 120042 65ad10257125330b0393e76623dfd2bc ""
   "Resources/lte.png" 1733586562.67442 154668 6091f8e34e76362aeccf64bbd2a83065 ""
   "Resources/lte2.png" 1733587549.49754 110031 83fe9dddda030acd61f4a2de0597f536 ""
   "Resources/lte_auth.png" 1733587713.37853 136737 09031cf6a129af427f0b4cf3992bfce6 ""
@@ -214,7 +218,7 @@
   "Resources/radius.png" 1733584358.95778 52565 6ae54baeed6b112744f5dde1ccfad810 ""
   "Resources/sec_tag.png" 1733584419.463 52371 7f1cec0cbddf807b8aa38b402b7fafbb ""
   "Resources/tls.png" 1733584020.16839 103333 59b2b06a968c74ff4e81201304c98106 ""
-  "main.aux" 1733591121.58919 11926 3e49f048458f5c0b94772c468614b2a5 "xelatex"
+  "main.aux" 1733593525.5879 14237 25a357053692d9c7cff4dddab0df6155 "xelatex"
   "main.tex" 1733567961.18596 1998 ed55b1b7b87df40277e71ad6c1d40613 ""
   (generated)
   "main.aux"

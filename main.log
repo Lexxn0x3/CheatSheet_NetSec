@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.12.7)  7 DEC 2024 18:05
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.12.7)  7 DEC 2024 18:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1456,16 +1456,27 @@ File: Resources/dual-homed.png Graphic file (type bmp)
 <Resources/dual-homed.png>
 File: Resources/dmz.png Graphic file (type bmp)
 <Resources/dmz.png>
-) [4] 
+[4]
+File: Resources/dns_poison1.png Graphic file (type bmp)
+<Resources/dns_poison1.png>
+File: Resources/dns_poison2.png Graphic file (type bmp)
+<Resources/dns_poison2.png>
+File: Resources/kaminsky.png Graphic file (type bmp)
+<Resources/kaminsky.png>
+File: Resources/dnssec.png Graphic file (type bmp)
+<Resources/dnssec.png>
+
+Missing character: There is no ’ ("2019) in font mdbchr8t!
+) [5] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 22539 strings out of 476696
- 433323 string characters out of 5806955
- 1920018 words of memory out of 6000000
- 42282 multiletter control sequences out of 15000+600000
+ 22574 strings out of 476696
+ 434220 string characters out of 5806955
+ 1927018 words of memory out of 6000000
+ 42313 multiletter control sequences out of 15000+600000
  560023 words of font info for 96 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,14n,89p,431b,1051s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,14n,89p,431b,1121s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (4 pages, 101300 bytes).
+Output written on main.xdv (5 pages, 127532 bytes).

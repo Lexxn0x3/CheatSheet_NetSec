@@ -1772,7 +1772,7 @@ In this attack, an attacker inserts a fake DNS record into a legitimate DNS resp
 \end{itemize}
 The effect is that users querying the victim name server are redirected to the wrong IP address. This attack can be mitigated by randomizing query IDs, validating responses using DNSSEC, and employing stricter validation rules.
 
-\includegraphics[width=0.7\columnwidth]{Resources/dns_poison1.png}
+\includegraphics[width=0.6\columnwidth]{Resources/dns_poison1.png}
 
 \paragraph{DNS Cache Poisoning: Fake Response Faster than Legitimate Server}
 This attack involves the attacker sending a fake DNS response faster than the legitimate authoritative server. The steps are:
@@ -1784,7 +1784,7 @@ This attack involves the attacker sending a fake DNS response faster than the le
 \end{itemize}
 The result is that the legitimate response is ignored, and the malicious IP address is cached. Countermeasures include randomizing ports and query IDs, implementing DNSSEC, and stricter validation rules.
 
-\includegraphics[width=0.7\columnwidth]{Resources/dns_poison2.png}
+\includegraphics[width=0.6\columnwidth]{Resources/dns_poison2.png}
 
 \paragraph{Kaminsky Attack}
 The Kaminsky attack is a sophisticated DNS cache poisoning technique that exploits a vulnerability in DNS protocol design to inject malicious entries into DNS caches. The steps are as follows:
@@ -1810,119 +1810,4 @@ To protect against DNS cache poisoning and related attacks, the following counte
 \end{itemize}
 
 These countermeasures significantly increase the difficulty for attackers to successfully perform DNS cache poisoning or similar attacks.
-
-\subsubsection{DNSSEC (Domain Name System Security Extensions)}
-\textbf{Goal of DNSSEC:}
-\begin{itemize}
-    \item \textbf{Origin Authentication:} Ensures authenticity of DNS data.
-    \item \textbf{Authenticated Denial of Existence:} Proof of non-existence of records.
-    \item \textbf{Data Integrity:} Verifies DNS data has not been tampered with.
-\end{itemize}
-\textbf{History:}
-\begin{itemize}
-    \item 1993: Discussions and development started.
-    \item 1997, 1999: Initial proposals (RFCs 2065, 2535, now obsolete).
-    \item 2005: Current approach (RFCs 4033-4035).
-    \item 2010: All root servers supported DNSSEC.
-    \item 2011: DNSSEC adopted for \texttt{.de} domains.
-\end{itemize}
-\textbf{Key Resource Records Introduced:}
-\begin{itemize}
-    \item \textbf{DNSKEY:} Public keys for signing zone data, distinguishing Key Signing Keys (KSK) and Zone Signing Keys (ZSK).
-    \item \textbf{DS:} Delegation Signer; links parent to child zones.
-    \item \textbf{RRSIG:} Digital signatures for verifying records.
-    \item \textbf{NSEC/NSEC3:} Proof of non-existence through authenticated linked lists of DNS records.
-\end{itemize}
-\textbf{General Procedure:}\\
-\includegraphics[width=\columnwidth]{Resources/dnssec.png}
-\begin{enumerate}
-    \item Zone entries are signed with private ZSK.
-    \item ZSK is signed by private KSK.
-    \item Parent domain stores the hash of the child zone’s KSK in a DS record.
-    \item Establishes a recursive \textit{chain of trust}, starting from the root zone.
-    \item Public key of the root zone acts as the \textit{trust anchor}.
-\end{enumerate}
-\textbf{Chain of Trust:}
-\begin{itemize}
-    \item Starts at the root zone.
-    \item Extends through TLDs, domain zones, and subdomains.
-    \item Requires the public key of the root zone to be securely distributed.
-\end{itemize}
-\paragraph{NSEC: Proof of Non-Existence}
-\begin{itemize}
-    \item Authenticates denial of existence by creating a sorted linked list of all domain names in a zone.
-    \item Each signed entry includes the next domain name.
-    \item Example: If \texttt{hello.example.com} is queried but doesn't exist, the response includes proof of its neighboring domains.
-    \item \textbf{Disadvantage:} Enables zone walking, where attackers can list all (sub-)domains.
-\end{itemize}
-\paragraph{NSEC3: Mitigation of Zone Walking}
-\begin{itemize}
-    \item Uses hashed domain names instead of plaintext.
-    \item Sorted hashes prevent attackers from easily enumerating domain names.
-    \item Clients compute the hash of the requested domain and compare it to NSEC3 records.
-    \item Dictionary attacks are still possible, but mitigated using salt and multiple hashing iterations.
-\end{itemize}
-\paragraph{Other Uses of DNSSEC}
-DNSSEC can be utilized to enhance other security mechanisms by securely distributing associated data:
-\begin{itemize}
-    \item \textbf{SSH fingerprints:} Distributed as per RFC 4244.
-    \item \textbf{IPsec/IKE public keys:} Defined in RFC 4025.
-    \item \textbf{TLS trust anchors via DANE (RFC 6698):}
-    \begin{itemize}
-        \item DNS-Based Authentication of Named Entities (DANE).
-        \item Protects against clandestine TLS certificate exchange by attackers.
-        \item Enables referencing of X.509 certificates in DNSSEC-protected resource records (TLSA records).
-    \end{itemize}
-\end{itemize}
-\paragraph{DNSSEC in Practice}
-\begin{itemize}
-    \item \textbf{Slow Adoption:} DNSSEC uptake has been slow due to:
-    \begin{itemize}
-        \item Overhead in communication, computation, delays, and administrative effort.
-        \item Limited operational experience despite its long history.
-        \item Larger resource records, increasing the potential for DoS attacks.
-    \end{itemize}
-    \item \textbf{No Confidentiality:} DNSSEC was not designed to provide confidentiality.
-    \item \textbf{Typical Deployment:}
-    \begin{itemize}
-        \item The resolver is usually the nameserver of the ISP or network, not the local system.
-        \item Resolver verifies signatures but requires the path from the end-user system to the resolver to be secured.
-    \end{itemize}
-\end{itemize}
-\subsubsection{DNS-over-TLS (DoT) and DNS-over-HTTPS (DoH)}
-\begin{itemize}
-    \item \textbf{DNS-over-TLS (DoT):}
-    \begin{itemize}
-        \item Uses \textbf{TLS} (instead of UDP) to transport DNS queries.
-        \item Provides \textbf{confidentiality}, integrity, and authenticity between the client and resolver (nameserver, often referred to as the ``DNS provider'').
-        \item Does not protect traffic between nameservers (e.g., between the DNS provider and the authoritative nameserver).
-    \end{itemize}
-    \item \textbf{DNS-over-HTTPS (DoH):}
-    \begin{itemize}
-        \item Similar to DoT but uses \textbf{HTTPS} to send queries via POST or GET requests.
-        \item Supports normal query formats (as used in UDP) or even JSON.
-        \item Particularly suited for browsers and web applications.
-        \item Comes with \textbf{additional overhead and dependencies}.
-    \end{itemize}
-\end{itemize}
-\subsection{Zusammenfassung DNS}
-\begin{itemize}
-    \item \textbf{Domain Name System (DNS)}
-    \begin{itemize}
-        \item Developed without security in mind
-        \item Vulnerabilities: \textbf{Cache poisoning attacks}, Kaminsky's attack
-    \end{itemize}
-    \item \textbf{DNSSEC}
-    \begin{itemize}
-        \item Provides \textbf{digital signatures and keys} in DNS resource records
-        \item Ensures \textbf{integrity} and \textbf{authenticity} of DNS responses
-        \item Implements \textbf{NSEC/NSEC3} for proof of non-existence of DNS names
-        \item Can bootstrap other security mechanisms
-    \end{itemize}
-    \item \textbf{DNS-over-HTTPS (DoH)}, \textbf{DNS-over-TLS (DoT)}
-    \begin{itemize}
-        \item Protect traffic from the end user system to the DNS resolver / nameserver
-        \item Both provide \textbf{confidentiality, integrity, and authenticity} via \textbf{TLS}
-    \end{itemize}
-\end{itemize}
 

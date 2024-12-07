@@ -1156,4 +1156,16 @@ INPUT Resources/dual-homed.png
 INPUT ./Resources/dmz.png
 INPUT ./Resources/dmz.png
 INPUT Resources/dmz.png
+INPUT ./Resources/dns_poison1.png
+INPUT ./Resources/dns_poison1.png
+INPUT Resources/dns_poison1.png
+INPUT ./Resources/dns_poison2.png
+INPUT ./Resources/dns_poison2.png
+INPUT Resources/dns_poison2.png
+INPUT ./Resources/kaminsky.png
+INPUT ./Resources/kaminsky.png
+INPUT Resources/kaminsky.png
+INPUT ./Resources/dnssec.png
+INPUT ./Resources/dnssec.png
+INPUT Resources/dnssec.png
 INPUT main.aux
