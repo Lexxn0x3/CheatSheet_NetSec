@@ -1926,3 +1926,234 @@ DNSSEC can be utilized to enhance other security mechanisms by securely distribu
     \end{itemize}
 \end{itemize}
 
+\section{eMail and Messaging Security}
+\subsection{eMail}
+\subsubsection{Sending Emails: SMTP, POP3, IMAP}
+\begin{itemize}
+    \item \textbf{Protocols:}
+    \begin{itemize}
+        \item Send: SMTP (Simple Mail Transfer Protocol)
+        \item Receive: POP3 or IMAP
+    \end{itemize}
+    \item \textbf{Security:}
+    \begin{itemize}
+        \item \textbf{TLS:} 
+        \begin{itemize}
+            \item SMTP over TLS: sender to mail server
+            \item POP3/IMAP over TLS: mail server to recipient
+        \end{itemize}
+        \item \textbf{Between Mail Servers:} Opportunistic encryption (e.g., STARTTLS)
+        \begin{itemize}
+            \item Starts unprotected, upgrades to TLS if supported.
+            \item Falls back to plaintext if TLS fails.
+            \item No identity verification (certificates often not checked).
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{PGP: End-to-End Security for Emails}
+\begin{itemize}
+    \item \textbf{Pretty Good Privacy (PGP):}
+    \begin{itemize}
+        \item Developed in 1991 by Phil Zimmermann.
+        \item Signs and encrypts data (not limited to email).
+        \item Standardized as OpenPGP (RFC 2440, 4880).
+        \item Implementations: commercial PGP, GnuPG (open source), others.
+        \item Trust model: Web of Trust (decentralized, ``anarchic'').
+    \end{itemize}
+    
+    \item \textbf{End-to-End Security:}
+    \begin{itemize}
+        \item Hybrid encryption:
+        \begin{itemize}
+            \item Symmetric key (session-specific) encrypted by recipient's public key.
+            \item Message encrypted with the symmetric key.
+        \end{itemize}
+        \item \textbf{Independent Signature \& Encryption:}
+        \begin{itemize}
+            \item PGP handles signing and encryption as separate operations.
+            \item Issue: Without binding the signature to the encryption context, attackers can:
+            \begin{itemize}
+                \item Remove encryption and present the signature in plaintext (signature repudiation).
+                \item Forward signed plaintext to unintended recipients without the encryption.
+                \item Modify unsigned metadata or associate it with a different context.
+            \end{itemize}
+            \item Modern cryptographic standards prefer combining these operations into a single, secure AEAD process to ensure both confidentiality and integrity.
+        \end{itemize}
+        \item \textbf{Authenticated Encryption (AE):}
+        \begin{itemize}
+            \item Introduced in 2001 as a partial fix (Modification Detection Code, MDC).
+            \item MDC ensured detection of tampering but lacked proper AE guarantees.
+            \item Issues with early AE:
+            \begin{itemize}
+                \item MDC was not strongly integrated into the cryptographic protocol.
+                \item Attacks possible if MDC was not always applied correctly.
+            \end{itemize}
+            \item Recent standards include ``real'' AEAD (Authenticated Encryption with Associated Data):
+            \begin{itemize}
+                \item Combines encryption and integrity into a single operation.
+                \item Protects both the ciphertext and associated metadata (e.g., headers).
+                \item Ensures signatures cannot be separated from encryption.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{Main Critiques:}
+    \begin{itemize}
+        \item Usability issues: easy to misuse.
+        \item Poor integration with many mail clients.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{MIME, PGP/MIME, S/MIME}
+\begin{itemize}
+    \item \textbf{MIME (Multi-purpose Internet Mail Extensions):}
+    \begin{itemize}
+        \item Enables email attachments and sending arbitrary data (not just text).
+        \item MIME header specifies transfer encoding and content type (MIME type).
+    \end{itemize}
+    \item \textbf{PGP/MIME:}
+    \begin{itemize}
+        \item Allows sending PGP-encrypted or signed ciphertext as MIME attachments.
+    \end{itemize}
+    \item \textbf{S/MIME (Secure MIME):}
+    \begin{itemize}
+        \item Alternative solution for encrypting and signing emails.
+        \item Based on X.509 certificates and Public Key Infrastructure (PKI).
+        \item Provides encryption and signing with properties similar to PGP but utilizes a different trust model.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{E-Mail End-to-End Security: S/MIME and PGP}
+\begin{itemize}
+    \item \textbf{Both S/MIME and PGP are widely used for secure email communication:}
+    \begin{itemize}
+        \item \textbf{S/MIME:} Better suited for corporate environments.
+        \begin{itemize}
+            \item Companies can distribute certificates to employees.
+            \item IT departments can pre-configure email clients (e.g., install plugins).
+            \item Users simply click to encrypt/sign emails.
+            \item Works seamlessly within the organization's infrastructure.
+        \end{itemize}
+        \item \textbf{PGP:} Decentralized, popular among individuals and open-source communities.
+        \begin{itemize}
+            \item No need for a centralized PKI; individuals maintain control.
+            \item Less user-friendly and more error-prone than S/MIME.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Efail attack (2018):} Affected both S/MIME and PGP by exploiting how email clients handled encrypted content.
+\end{itemize}
+
+\subsubsection{Improving Transport Encryption for Email}
+\includegraphics[width=\columnwidth]{Resources/mail.png}
+\textbf{DANE (DNS-based Authentication of Named Entities)}  
+\begin{itemize}
+    \item DNS entry (TLSA record) acts as a trust anchor for TLS certificate verification.
+    \item Requires DNSSEC to ensure integrity.
+    \item Prevents downgrade attacks by enforcing TLS if TLSA records are available.
+\end{itemize}
+\textbf{SPF, DKIM, and DMARC}  
+\begin{itemize}
+    \item \textbf{SPF:} Specifies authorized mail servers for a domain.
+    \item \textbf{DKIM:} Signs outgoing emails with private keys; recipients verify signatures.
+    \item \textbf{DMARC:} Combines SPF and DKIM, defines policies for authentication and reporting.
+\end{itemize}
+\textbf{MTA-STS (MTA Strict Transport Security)}  
+\begin{itemize}
+    \item Alternative to DANE, uses a "trust on first use" (TOFU) approach.
+    \item Does not require DNSSEC.
+\end{itemize}
+
+\subsection{Instant Messaging: Signal Protocol}  
+\begin{itemize}
+    \item State-of-the-art security protocol for messaging, used by apps like WhatsApp.
+    \item \textbf{History:}
+    \begin{itemize}
+        \item Developed by Open Whisper Systems (Moxie Marlinspike, Trevor Perrin) for \textit{TextSecure} (now Signal).
+        \item Originates from \textit{Off-the-Record} (OTR) protocol $\rightarrow$ TextSecure v1 (2013).
+        \item TextSecure v2 (2014): Introduced \textit{Axolotl Ratchet}.
+        \item TextSecure v3 (2014): New cryptographic primitives and formats.
+        \item Signal (2016): Protocol updated and renamed.
+        \item Formal security analysis in 2016; published in 2017.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Key Components}
+\begin{itemize}
+    \item \textbf{KDF Chain:} A Key Derivation Function (KDF) is used in a forward-only hash chain to ensure:
+    \begin{itemize}
+        \item \textit{Resilience:} Output keys appear random even if adversary controls inputs.
+        \item \textit{Forward Security:} Past keys remain secure if current keys are compromised.
+        \item \textit{Break-in Recovery:} Future keys remain secure with sufficient entropy.
+    \end{itemize}
+    \includegraphics[width=0.4\columnwidth]{Resources/signal_kdf.png}
+    
+    \item \textbf{Double Ratchet Mechanism:} Combines two ratchets:
+    \begin{itemize}
+        \item \textit{Symmetric Key Ratchet:} Uses a KDF to generate encryption keys for messages.
+        \item \textit{Diffie-Hellman (DH) Ratchet:} Updates DH key pairs for forward secrecy after every message exchange.
+    \end{itemize}
+    
+    \item \textbf{Diffie-Hellman Ratchet:}
+    \begin{itemize}
+        \item Continuously performs DH key exchanges for each message.
+        \item Transmits DH key shares with messages.
+        \item Computes new shared secrets to derive message encryption keys.
+    \end{itemize}
+    \includegraphics[width=0.8\columnwidth]{Resources/signal_dh.png}
+    
+    \item \textbf{Root Chain:} Combines the DH ratchet and symmetric key ratchet:
+    \begin{itemize}
+        \item Generates a root key (RK) through DH exchanges.
+        \item Derives sending and receiving chain keys (CKs) for message encryption.
+        \item Complete ratchet step => new root key
+    \end{itemize}
+    \includegraphics[width=.5\columnwidth]{Resources/signal_root_chain.png}
+    
+    \item \textbf{Message Keys:} Each message key is derived from the corresponding chain key (CK):
+    \begin{itemize}
+        \item Sender's CK encrypts messages.
+        \item Receiver's CK decrypts messages.
+        \item Ensures messages cannot be decrypted after keys are deleted.
+    \end{itemize}
+    \includegraphics[width=0.8\columnwidth]{Resources/signal_message_keys.png}
+\end{itemize}
+
+\includegraphics[width=.9\columnwidth]{Resources/signal_example.png}
+
+\subsection{Summary: Email and Messaging Security}
+
+\paragraph{Email Security}
+\begin{itemize}
+    \item \textbf{End-to-End Security:} 
+    \begin{itemize}
+        \item Practical but rarely used due to usability issues.
+        \item Solutions: \textbf{PGP}, \textbf{S/MIME}.
+    \end{itemize}
+    \item \textbf{Email Transport Security:}
+    \begin{itemize}
+        \item Originally not designed with security in mind.
+        \item Improvements: \textbf{DANE}, \textbf{SPF}, \textbf{DKIM}, \textbf{DMARC}.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Instant Messaging Security}
+\begin{itemize}
+    \item \textbf{Modern Use Case:}
+    \begin{itemize}
+        \item Instant messaging is more recent compared to "ancient" email.
+        \item Requires tailored security solutions.
+    \end{itemize}
+    \item \textbf{Closed Ecosystems:}
+    \begin{itemize}
+        \item Easier to deploy robust security.
+        \item High dependency on service providers, limiting competition.
+    \end{itemize}
+    \item \textbf{Signal Protocol:}
+    \begin{itemize}
+        \item Designed for end-to-end security and confidentiality.
+        \item Based on the \textbf{double ratchet} mechanism.
+        \item Ensures forward secrecy; used by multiple messengers.
+    \end{itemize}
+\end{itemize}
+

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.12.7)  7 DEC 2024 18:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.11.12)  8 DEC 2024 12:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -11,14 +11,14 @@ Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count181
-\c@section=\count182
-\c@subsection=\count183
-\c@subsubsection=\count184
-\c@paragraph=\count185
-\c@subparagraph=\count186
-\c@figure=\count187
-\c@table=\count188
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
@@ -36,9 +36,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count189
-\Gm@cntv=\count190
-\c@Gm@tempcnt=\count191
+\Gm@cnth=\count193
+\Gm@cntv=\count194
+\c@Gm@tempcnt=\count195
 \Gm@bindingoffset=\dimen141
 \Gm@wd@mp=\dimen142
 \Gm@odd@mp=\dimen143
@@ -65,11 +65,8 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 (/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
-Invalid UTF-8 byte or sequence at line 284 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 299 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 550 replaced by U+FFFD.
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count192
+\c@AlgoLine=\count196
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
@@ -78,7 +75,7 @@ Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count193
+\c@checkoddpage=\count197
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
@@ -116,9 +113,9 @@ Package: relsize 2013/03/29 ver 4.1
 \algoheightrule=\skip66
 \algotitleheightruledefault=\skip67
 \algotitleheightrule=\skip68
-\c@algocfline=\count194
-\c@algocfproc=\count195
-\c@algocf=\count196
+\c@algocfline=\count198
+\c@algocfproc=\count199
+\c@algocf=\count266
 \algocf@algoframe=\box57
 \algocf@algobox=\box58
 )
@@ -147,14 +144,14 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
-\c@tracingmulticols=\count197
+\c@tracingmulticols=\count267
 \mult@box=\box59
 \multicol@leftmargin=\dimen155
-\c@unbalance=\count198
-\c@collectmore=\count199
-\doublecol@number=\count266
-\multicoltolerance=\count267
-\multicolpretolerance=\count268
+\c@unbalance=\count268
+\c@collectmore=\count269
+\doublecol@number=\count270
+\multicoltolerance=\count271
+\multicolpretolerance=\count272
 \full@width=\dimen156
 \page@free=\dimen157
 \premulticols=\dimen158
@@ -204,33 +201,30 @@ Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
 \@tempa=\box99
 \@tempa=\box100
 \@tempa=\box101
-\c@minrows=\count269
-\c@columnbadness=\count270
-\c@finalcolumnbadness=\count271
+\c@minrows=\count273
+\c@columnbadness=\count274
+\c@finalcolumnbadness=\count275
 \last@try=\dimen161
 \multicolovershoot=\dimen162
 \multicolundershoot=\dimen163
 \mult@nat@firstbox=\box102
 \colbreak@box=\box103
-\mc@col@check@num=\count272
+\mc@col@check@num=\count276
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks18
 \inpenc@posthook=\toks19
-
-
-Package inputenc Warning: inputenc package ignored with utf8 based engines.
-
-) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2023/02/13 3.86 The Babel package
-\babel@savecnt=\count273
+\babel@savecnt=\count277
 \U@D=\dimen164
 \l@unhyphenated=\language85
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel/xebabel.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count274
+\bbl@dirlevel=\count278
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel-german/ngerman.ldf
 Language: ngerman 2021/02/27 v2.13 German support for babel (post-1996 orthogra
@@ -247,30 +241,25 @@ Package babel Info: Importing font and identification data for ngerman
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
-2.
-
-(/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmr.fd
-File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-))
+)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count275
+\lst@mode=\count279
 \lst@gtempboxa=\box104
 \lst@token=\toks20
-\lst@length=\count276
+\lst@length=\count280
 \lst@currlwidth=\dimen165
-\lst@column=\count277
-\lst@pos=\count278
+\lst@column=\count281
+\lst@pos=\count282
 \lst@lostspace=\dimen166
 \lst@width=\dimen167
-\lst@newlines=\count279
-\lst@lineno=\count280
+\lst@newlines=\count283
+\lst@lineno=\count284
 \lst@maxwidth=\dimen168
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count281
-\lst@skipnumbers=\count282
+\c@lstnumber=\count285
+\lst@skipnumbers=\count286
 \lst@framebox=\box105
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -284,8 +273,8 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@outerparindent=\dimen169
 \enit@toks=\toks21
 \enit@inbox=\box106
-\enit@count@id=\count283
-\enitdp@description=\count284
+\enit@count@id=\count287
+\enitdp@description=\count288
 )
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2021/07/05 v2.14 Sectioning titles
@@ -316,10 +305,10 @@ Package: soul-ori 2023-02-18 v3.0 letterspacing/underlining (mf)
 \SOUL@hyphkern=\dimen178
 \SOUL@dimen=\dimen179
 \SOUL@dimeni=\dimen180
-\SOUL@minus=\count285
-\SOUL@comma=\count286
-\SOUL@apo=\count287
-\SOUL@grave=\count288
+\SOUL@minus=\count289
+\SOUL@comma=\count290
+\SOUL@apo=\count291
+\SOUL@grave=\count292
 \SOUL@spaceskip=\skip83
 \SOUL@ttwidth=\dimen181
 \SOUL@uldp=\dimen182
@@ -343,10 +332,10 @@ Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: xetex.def on input line 107.
+Package graphics Info: Driver file: pdftex.def on input line 107.
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def
-File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen184
 \Gin@req@width=\dimen185
@@ -372,7 +361,7 @@ Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
 \TX@old@col=\dimen190
 \TX@target=\dimen191
 \TX@delta=\dimen192
-\TX@cols=\count289
+\TX@cols=\count293
 \TX@ftn=\toks30
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
@@ -417,35 +406,30 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yd=\dimen260
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count290
-\c@pgf@countb=\count291
-\c@pgf@countc=\count292
-\c@pgf@countd=\count293
+\c@pgf@counta=\count294
+\c@pgf@countb=\count295
+\c@pgf@countc=\count296
+\c@pgf@countd=\count297
 \t@pgf@toka=\toks35
 \t@pgf@tokb=\toks36
 \t@pgf@tokc=\toks37
-\pgf@sys@id@count=\count294
+\pgf@sys@id@count=\count298
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
-Driver file for pgf: pgfsys-xetex.def
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
-File: pgfsys-xetex.def 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
-File: pgfsys-dvipdfmx.def 2023-01-15 v3.1.10 (3.1.10)
+Driver file for pgf: pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
-)
-\pgfsys@objnum=\count295
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count296
-\pgfsyssoftpath@bigbuffer@items=\count297
+\pgfsyssoftpath@smallbuffer@items=\count299
+\pgfsyssoftpath@bigbuffer@items=\count300
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
@@ -456,7 +440,7 @@ Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: xetex.def on input line 227.
+Package xcolor Info: Driver file: pdftex.def on input line 227.
 LaTeX Info: Redefining \color on input line 711.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
@@ -476,7 +460,7 @@ Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen261
-\pgfmath@count=\count298
+\pgfmath@count=\count301
 \pgfmath@box=\box111
 \pgfmath@toks=\toks38
 \pgfmath@stack@operand=\toks39
@@ -501,7 +485,7 @@ tex)
 thmetics.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count299
+\c@pgfmathroundto@lastzeros=\count302
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
@@ -540,7 +524,7 @@ File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box112
 \pgf@hbox=\box113
 \pgf@layerbox@main=\box114
-\pgf@picture@serial@count=\count300
+\pgf@picture@serial@count=\count303
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
@@ -573,8 +557,8 @@ File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen285
-\pgf@sys@shading@range@num=\count301
-\pgf@shadingcount=\count302
+\pgf@sys@shading@range@num=\count304
+\pgf@shadingcount=\count305
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -632,7 +616,7 @@ Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count303
+\pgf@plot@mark@count=\count306
 \pgfplotmarksize=\dimen290
 )
 \tikz@lastx=\dimen291
@@ -647,18 +631,18 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@figbox@bg=\box118
 \tikz@tempbox=\box119
 \tikz@tempbox@bg=\box120
-\tikztreelevel=\count304
-\tikznumberofchildren=\count305
-\tikznumberofcurrentchild=\count306
-\tikz@fig@count=\count307
+\tikztreelevel=\count307
+\tikznumberofchildren=\count308
+\tikznumberofcurrentchild=\count309
+\tikz@fig@count=\count310
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count308
-\pgfmatrixcurrentcolumn=\count309
-\pgf@matrix@numberofcolumns=\count310
+\pgfmatrixcurrentrow=\count311
+\pgfmatrixcurrentcolumn=\count312
+\pgf@matrix@numberofcolumns=\count313
 )
-\tikz@expandcount=\count311
+\tikz@expandcount=\count314
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
@@ -705,14 +689,14 @@ Package: csquotes 2022-09-14 v5.2n context-sensitive quotations (JAW)
 
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count312
+\etb@tempcnta=\count315
 )
-\csq@reset=\count313
-\csq@gtype=\count314
-\csq@glevel=\count315
-\csq@qlevel=\count316
-\csq@maxlvl=\count317
-\csq@tshold=\count318
+\csq@reset=\count316
+\csq@gtype=\count317
+\csq@glevel=\count318
+\csq@qlevel=\count319
+\csq@maxlvl=\count320
+\csq@tshold=\count321
 \csq@ltx@everypar=\toks43
 
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def
@@ -739,16 +723,16 @@ Package: arydshln 2019/02/21 v1.76
 \adl@depth=\dimen303
 \adl@depthsave=\dimen304
 \adl@finaldepth=\dimen305
-\adl@columns=\count319
-\adl@ncol=\count320
-\adl@currentcolumn=\count321
-\adl@currentcolumnsave=\count322
-\adl@totalheight=\count323
-\adl@totalheightsave=\count324
-\adl@dash=\count325
-\adl@gap=\count326
-\adl@cla=\count327
-\adl@clb=\count328
+\adl@columns=\count322
+\adl@ncol=\count323
+\adl@currentcolumn=\count324
+\adl@currentcolumnsave=\count325
+\adl@totalheight=\count326
+\adl@totalheightsave=\count327
+\adl@dash=\count328
+\adl@gap=\count329
+\adl@cla=\count330
+\adl@clb=\count331
 \adl@everyvbox=\toks44
 \adl@LTpagetotal=\dimen306
 )
@@ -772,14 +756,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count329
+\inf@bad=\count332
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count330
-\leftroot@=\count331
+\uproot@=\count333
+\leftroot@=\count334
 LaTeX Info: Redefining \overline on input line 399.
 LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count332
-\DOTSCASE@=\count333
+\classnum@=\count335
+\DOTSCASE@=\count336
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -792,20 +776,20 @@ LaTeX Info: Redefining \Bigg on input line 725.
 \big@size=\dimen309
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count334
+\macc@depth=\count337
 LaTeX Info: Redefining \bmod on input line 905.
 LaTeX Info: Redefining \pmod on input line 910.
 LaTeX Info: Redefining \smash on input line 940.
 LaTeX Info: Redefining \relbar on input line 970.
 LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count335
+\c@MaxMatrixCols=\count338
 \dotsspace@=\muskip16
-\c@parentequation=\count336
-\dspbrk@lvl=\count337
+\c@parentequation=\count339
+\dspbrk@lvl=\count340
 \tag@help=\toks46
-\row@=\count338
-\column@=\count339
-\maxfields@=\count340
+\row@=\count341
+\column@=\count342
+\maxfields@=\count343
 \andhelp@=\toks47
 \eqnshift@=\dimen310
 \alignsep@=\dimen311
@@ -839,7 +823,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count341
+\c@float@type=\count344
 \float@exts=\toks50
 \float@box=\box144
 \@float@everytoks=\toks51
@@ -857,18 +841,18 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen323
 \cmidrulekern=\dimen324
 \defaultaddspace=\dimen325
-\@cmidla=\count342
-\@cmidlb=\count343
+\@cmidla=\count345
+\@cmidlb=\count346
 \@aboverulesep=\dimen326
 \@belowrulesep=\dimen327
-\@thisruleclass=\count344
-\@lastruleclass=\count345
+\@thisruleclass=\count347
+\@lastruleclass=\count348
 \@thisrulewidth=\dimen328
 )
 (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip89
-\multirow@cntb=\count346
+\multirow@cntb=\count349
 \multirow@dima=\skip90
 \bigstrutjot=\dimen329
 )
@@ -877,15 +861,15 @@ Package: pbox 2011/12/07 v1.2 Dynamic parboxes
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count347
-\calc@Bcount=\count348
+\calc@Acount=\count350
+\calc@Bcount=\count351
 \calc@Adimen=\dimen330
 \calc@Bdimen=\dimen331
 \calc@Askip=\skip91
 \calc@Bskip=\skip92
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count349
+\calc@Ccount=\count352
 \calc@Cskip=\skip93
 )
 \pb@xlen=\skip94
@@ -907,7 +891,7 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen332
 \WF@size=\dimen333
-\c@WF@wrappedlines=\count350
+\c@WF@wrappedlines=\count353
 \WF@box=\box146
 \WF@everypar=\toks52
 Package: wrapfig 2003/01/31  v 3.6
@@ -1046,9 +1030,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> T1/mdbch/m/it on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/lmss/m/n on input line 134.
+(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/lmtt/m/n on input line 135.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 135.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
 (Font)                  OT1/mdbch/b/n --> T1/mdbch/b/n on input line 137.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
@@ -1056,9 +1040,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> T1/mdbch/b/it on input line 139.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/lmss/b/n on input line 140.
+(Font)                  OT1/cmss/bx/n --> T1/cmss/b/n on input line 140.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/lmtt/b/n on input line 141.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/b/n on input line 141.
 \symlettersupright=\mathgroup8
 LaTeX Font Info:    Overwriting symbol font `lettersupright' in version `bold'
 (Font)                  OML/mdbch/m/n --> OML/mdbch/b/n on input line 144.
@@ -1074,7 +1058,7 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks53
 \XKV@tempa@toks=\toks54
 )
-\XKV@depth=\count351
+\XKV@depth=\count354
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 LaTeX Font Info:    Trying to load font information for T1+mdbch on input line 
@@ -1087,11 +1071,15 @@ LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 (Font)              scaled to size 9.60007pt on input line 186.
 LaTeX Font Info:    Redeclaring math accent \widetilde on input line 449.
 LaTeX Font Info:    Redeclaring math accent \widehat on input line 450.
+Now handling font encoding MDA ...
+... no UTF-8 mapping file for font encoding MDA
 \symmathdesignA=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `mathdesignA' in version `bold'
 (Font)                  MDA/mdbch/m/n --> MDA/mdbch/b/n on input line 491.
 LaTeX Font Info:    Overwriting encoding scheme math defaults on input line 493
 .
+Now handling font encoding MDB ...
+... no UTF-8 mapping file for font encoding MDB
 \symmathdesignB=\mathgroup10
 LaTeX Font Info:    Overwriting symbol font `mathdesignB' in version `bold'
 (Font)                  MDB/mdbch/m/n --> MDB/mdbch/b/n on input line 498.
@@ -1109,13 +1097,10 @@ Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
-\g__graphics_track_int=\count352
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count355
 \l__pdf_internal_box=\box147
-\g__pdf_backend_object_int=\count353
-\g__pdf_backend_annotation_int=\count354
-\g__pdf_backend_link_int=\count355
 )
 
 LaTeX Warning: Unused global option(s):
@@ -1133,13 +1118,6 @@ LaTeX Font Info:    ... okay on input line 72.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
 LaTeX Font Info:    ... okay on input line 72.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 7
-2.
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-)
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 72.
 LaTeX Font Info:    ... okay on input line 72.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
 LaTeX Font Info:    ... okay on input line 72.
@@ -1148,8 +1126,7 @@ LaTeX Font Info:    ... okay on input line 72.
 LaTeX Font Info:    Checking defaults for MDA/cmr/m/n on input line 72.
 LaTeX Font Info:    Trying to load font information for MDA+cmr on input line 7
 2.
-
-(/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdacmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdacmr.fd
 File: mdacmr.fd 
 )
 LaTeX Font Info:    ... okay on input line 72.
@@ -1163,9 +1140,9 @@ File: mdbcmr.fd
 LaTeX Font Info:    ... okay on input line 72.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: xetex
+*geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
-* driver: xetex
+* driver: pdftex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -1197,6 +1174,55 @@ LaTeX Font Info:    ... okay on input line 72.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count356
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count357
+\scratchdimen=\dimen334
+\scratchbox=\box148
+\nofMPsegments=\count358
+\nofMParguments=\count359
+\everyMPshowfont=\toks55
+\MPscratchCnt=\count360
+\MPscratchDim=\dimen335
+\MPnumerator=\count361
+\makeMPintoPDFobject=\count362
+\everyMPtoPDFconversion=\toks56
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 
 Package mathdesign/mdbch Warning: Package 'amssymb' shouldn't be used in conjon
 ction with package mdbch, on input line 72.
@@ -1232,27 +1258,58 @@ LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
 (Font)              scaled to size 6.72005pt on input line 17.
 LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
 (Font)              scaled to size 4.80003pt on input line 21.
-File: Resources/GCM-Galois_Counter_Mode_with_IV.svg.png Graphic file (type bmp)
+<Resources/GCM-Galois_Counter_Mode_with_IV.svg.png, id=4, 501.875pt x 553.06625
+pt>
+File: Resources/GCM-Galois_Counter_Mode_with_IV.svg.png Graphic file (type png)
 
-<Resources/GCM-Galois_Counter_Mode_with_IV.svg.png>
-File: Resources/tls.png Graphic file (type bmp)
-<Resources/tls.png>
-File: Resources/ipsec_overview.png Graphic file (type bmp)
-<Resources/ipsec_overview.png>
+<use Resources/GCM-Galois_Counter_Mode_with_IV.svg.png>
+Package pdftex.def Info: Resources/GCM-Galois_Counter_Mode_with_IV.svg.png  use
+d on input line 65.
+(pdftex.def)             Requested size: 97.96858pt x 107.96141pt.
+<Resources/tls.png, id=6, 872.25874pt x 641.39626pt>
+File: Resources/tls.png Graphic file (type png)
+<use Resources/tls.png>
+Package pdftex.def Info: Resources/tls.png  used on input line 97.
+(pdftex.def)             Requested size: 156.75032pt x 115.26039pt.
+<Resources/ipsec_overview.png, id=7, 649.42625pt x 402.50375pt>
+File: Resources/ipsec_overview.png Graphic file (type png)
+<use Resources/ipsec_overview.png>
+Package pdftex.def Info: Resources/ipsec_overview.png  used on input line 154.
+(pdftex.def)             Requested size: 195.93716pt x 121.43378pt.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 (Font)              scaled to size 6.24005pt on input line 164.
-File: Resources/esp.png Graphic file (type bmp)
-<Resources/esp.png>
-File: Resources/ikev1.png Graphic file (type bmp)
-<Resources/ikev1.png>
-File: Resources/ikev2.png Graphic file (type bmp)
-<Resources/ikev2.png>
-File: Resources/ike_sa_proposal.png Graphic file (type bmp)
-<Resources/ike_sa_proposal.png>
-File: Resources/network_access_control.png Graphic file (type bmp)
-<Resources/network_access_control.png>
-File: Resources/radius.png Graphic file (type bmp)
-<Resources/radius.png>
+<Resources/esp.png, id=8, 1044.90375pt x 298.11375pt>
+File: Resources/esp.png Graphic file (type png)
+<use Resources/esp.png>
+Package pdftex.def Info: Resources/esp.png  used on input line 177.
+(pdftex.def)             Requested size: 195.93716pt x 55.90073pt.
+<Resources/ikev1.png, id=9, 1066.98625pt x 487.8225pt>
+File: Resources/ikev1.png Graphic file (type png)
+<use Resources/ikev1.png>
+Package pdftex.def Info: Resources/ikev1.png  used on input line 235.
+(pdftex.def)             Requested size: 195.93716pt x 89.57582pt.
+<Resources/ikev2.png, id=10, 1099.10625pt x 503.8825pt>
+File: Resources/ikev2.png Graphic file (type png)
+<use Resources/ikev2.png>
+Package pdftex.def Info: Resources/ikev2.png  used on input line 280.
+(pdftex.def)             Requested size: 195.93716pt x 89.82611pt.
+<Resources/ike_sa_proposal.png, id=11, 672.5125pt x 412.54124pt>
+File: Resources/ike_sa_proposal.png Graphic file (type png)
+<use Resources/ike_sa_proposal.png>
+Package pdftex.def Info: Resources/ike_sa_proposal.png  used on input line 291.
+
+(pdftex.def)             Requested size: 137.15541pt x 84.13086pt.
+<Resources/network_access_control.png, id=12, 729.72626pt x 197.73875pt>
+File: Resources/network_access_control.png Graphic file (type png)
+<use Resources/network_access_control.png>
+Package pdftex.def Info: Resources/network_access_control.png  used on input li
+ne 315.
+(pdftex.def)             Requested size: 117.56349pt x 31.85608pt.
+<Resources/radius.png, id=13, 496.85625pt x 342.27875pt>
+File: Resources/radius.png Graphic file (type png)
+<use Resources/radius.png>
+Package pdftex.def Info: Resources/radius.png  used on input line 327.
+(pdftex.def)             Requested size: 137.15541pt x 94.4847pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 326--330
 
@@ -1347,13 +1404,23 @@ LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
 (Font)              scaled to size 6.72005pt on input line 332.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
 (Font)              scaled to size 4.80003pt on input line 332.
- [1
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf
+-dist/fonts/enc/dvips/ly1/texnansi.enc}
 
-]
-File: Resources/macsec_frame.png Graphic file (type bmp)
-<Resources/macsec_frame.png>
-File: Resources/sec_tag.png Graphic file (type bmp)
-<Resources/sec_tag.png>
+ <./Resources/GCM-Galois_Counter_Mode_with_IV.svg.png> <./Resources/tls.png> <.
+/Resources/ipsec_overview.png> <./Resources/esp.png> <./Resources/ikev1.png> <.
+/Resources/ikev2.png> <./Resources/ike_sa_proposal.png> <./Resources/network_ac
+cess_control.png>]
+<Resources/macsec_frame.png, id=31, 726.715pt x 276.03125pt>
+File: Resources/macsec_frame.png Graphic file (type png)
+<use Resources/macsec_frame.png>
+Package pdftex.def Info: Resources/macsec_frame.png  used on input line 411.
+(pdftex.def)             Requested size: 156.75032pt x 59.5393pt.
+<Resources/sec_tag.png, id=32, 942.52126pt x 202.7575pt>
+File: Resources/sec_tag.png Graphic file (type png)
+<use Resources/sec_tag.png>
+Package pdftex.def Info: Resources/sec_tag.png  used on input line 417.
+(pdftex.def)             Requested size: 156.75032pt x 33.7196pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 484--485
 
@@ -1364,44 +1431,62 @@ Underfull \hbox (badness 10000) in paragraph at lines 494--496
 
  []
 
-Missing character: There is no “ ("201C) in font mdbchr8t!
-Missing character: There is no ” ("201D) in font mdbchr8t!
-Missing character: There is no “ ("201C) in font mdbchr8t!
-Missing character: There is no ” ("201D) in font mdbchr8t!
-Missing character: There is no “ ("201C) in font mdbchr8t!
-Missing character: There is no ” ("201D) in font mdbchr8t!
-File: Resources/gsm.png Graphic file (type bmp)
-<Resources/gsm.png>
+<Resources/gsm.png, id=33, 1107.13625pt x 346.29375pt>
+File: Resources/gsm.png Graphic file (type png)
+<use Resources/gsm.png>
+Package pdftex.def Info: Resources/gsm.png  used on input line 779.
+(pdftex.def)             Requested size: 176.34224pt x 55.1545pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 779--783
 
  []
 
-Missing character: There is no “ ("201C) in font mdbchri8t!
-Missing character: There is no ” ("201D) in font mdbchri8t!
-[2]
-File: Resources/gsm_auth.png Graphic file (type bmp)
-<Resources/gsm_auth.png>
-
-Missing character: There is no “ ("201C) in font mdbchr8t!
-Missing character: There is no ” ("201D) in font mdbchr8t!
-Missing character: There is no “ ("201C) in font mdbchb8t!
-Missing character: There is no ” ("201D) in font mdbchb8t!
-File: Resources/lte.png Graphic file (type bmp)
-<Resources/lte.png>
-File: Resources/lte2.png Graphic file (type bmp)
-<Resources/lte2.png>
-File: Resources/lte_protocols.png Graphic file (type bmp)
-<Resources/lte_protocols.png>
-File: Resources/lte_auth.png Graphic file (type bmp)
-<Resources/lte_auth.png>
-File: Resources/prose.png Graphic file (type bmp)
-<Resources/prose.png>
-File: Resources/prose2.png Graphic file (type bmp)
-<Resources/prose2.png>
-Missing character: There is no → ("2192) in font mdbchr8t!
-Missing character: There is no → ("2192) in font mdbchr8t!
-Missing character: There is no → ("2192) in font mdbchr8t!
+[2 <./Resources/radius.png> <./Resources/macsec_frame.png> <./Resources/sec_tag
+.png> <./Resources/gsm.png>]
+<Resources/gsm_auth.png, id=44, 1244.65pt x 529.98pt>
+File: Resources/gsm_auth.png Graphic file (type png)
+<use Resources/gsm_auth.png>
+Package pdftex.def Info: Resources/gsm_auth.png  used on input line 862.
+(pdftex.def)             Requested size: 176.34224pt x 75.08624pt.
+<Resources/lte.png, id=45, 1186.4325pt x 539.01375pt>
+File: Resources/lte.png Graphic file (type png)
+<use Resources/lte.png>
+Package pdftex.def Info: Resources/lte.png  used on input line 937.
+(pdftex.def)             Requested size: 195.93716pt x 89.01567pt.
+<Resources/lte2.png, id=46, 1290.8225pt x 552.0625pt>
+File: Resources/lte2.png Graphic file (type png)
+<use Resources/lte2.png>
+Package pdftex.def Info: Resources/lte2.png  used on input line 938.
+(pdftex.def)             Requested size: 195.93716pt x 83.79138pt.
+<Resources/lte_protocols.png, id=47, 592.2125pt x 519.9425pt>
+File: Resources/lte_protocols.png Graphic file (type png)
+<use Resources/lte_protocols.png>
+Package pdftex.def Info: Resources/lte_protocols.png  used on input line 942.
+(pdftex.def)             Requested size: 58.78174pt x 51.6006pt.
+<Resources/lte_auth.png, id=48, 1249.66875pt x 603.25375pt>
+File: Resources/lte_auth.png Graphic file (type png)
+<use Resources/lte_auth.png>
+Package pdftex.def Info: Resources/lte_auth.png  used on input line 992.
+(pdftex.def)             Requested size: 156.75032pt x 75.66426pt.
+<Resources/prose.png, id=49, 1072.005pt x 376.40625pt>
+File: Resources/prose.png Graphic file (type png)
+<use Resources/prose.png>
+Package pdftex.def Info: Resources/prose.png  used on input line 1078.
+(pdftex.def)             Requested size: 137.15541pt x 48.15341pt.
+<Resources/prose2.png, id=50, 531.9875pt x 401.5pt>
+File: Resources/prose2.png Graphic file (type png)
+<use Resources/prose2.png>
+Package pdftex.def Info: Resources/prose2.png  used on input line 1094.
+(pdftex.def)             Requested size: 97.96858pt x 73.93326pt.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family mdbch in TS1 encoding.
+            Default family used instead on input line 1122.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family mdbch in TS1 encoding.
+            Default family used instead on input line 1123.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family mdbch in TS1 encoding.
+            Default family used instead on input line 1123.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
 (Font)              scaled to size 7.68005pt on input line 1128.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
@@ -1442,41 +1527,117 @@ Underfull \hbox (badness 10000) in paragraph at lines 1164--1167
 
  []
 
-Missing character: There is no → ("2192) in font mdbchb8t!
-Missing character: There is no → ("2192) in font mdbchb8t!
-Missing character: There is no → ("2192) in font mdbchb8t!
-[3]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-267.
- (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Missing character: There is no ’ ("2019) in font mdbchr8t!
-File: Resources/dual-homed.png Graphic file (type bmp)
-<Resources/dual-homed.png>
-File: Resources/dmz.png Graphic file (type bmp)
-<Resources/dmz.png>
-[4]
-File: Resources/dns_poison1.png Graphic file (type bmp)
-<Resources/dns_poison1.png>
-File: Resources/dns_poison2.png Graphic file (type bmp)
-<Resources/dns_poison2.png>
-File: Resources/kaminsky.png Graphic file (type bmp)
-<Resources/kaminsky.png>
-File: Resources/dnssec.png Graphic file (type bmp)
-<Resources/dnssec.png>
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family mdbch in TS1 encoding.
+            Default family used instead on input line 1169.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family mdbch in TS1 encoding.
+            Default family used instead on input line 1176.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family mdbch in TS1 encoding.
+            Default family used instead on input line 1177.
+[3{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./
+Resources/gsm_auth.png> <./Resources/lte.png> <./Resources/lte2.png> <./Resourc
+es/lte_protocols.png> <./Resources/lte_auth.png> <./Resources/prose.png> <./Res
+ources/prose2.png>]
+LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
+(Font)              scaled to size 5.36003pt on input line 1267.
+<Resources/dual-homed.png, id=64, 1017.8025pt x 437.635pt>
+File: Resources/dual-homed.png Graphic file (type png)
+<use Resources/dual-homed.png>
+Package pdftex.def Info: Resources/dual-homed.png  used on input line 1384.
+(pdftex.def)             Requested size: 137.15541pt x 58.97133pt.
+<Resources/dmz.png, id=65, 1131.22626pt x 461.725pt>
+File: Resources/dmz.png Graphic file (type png)
+<use Resources/dmz.png>
+Package pdftex.def Info: Resources/dmz.png  used on input line 1403.
+(pdftex.def)             Requested size: 156.75032pt x 63.97879pt.
+ [4{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./
+Resources/dual-homed.png> <./Resources/dmz.png>]
+<Resources/dns_poison1.png, id=72, 806.01125pt x 429.605pt>
+File: Resources/dns_poison1.png Graphic file (type png)
+<use Resources/dns_poison1.png>
+Package pdftex.def Info: Resources/dns_poison1.png  used on input line 1775.
+(pdftex.def)             Requested size: 137.15541pt x 73.10399pt.
+<Resources/dns_poison2.png, id=73, 806.01125pt x 429.605pt>
+File: Resources/dns_poison2.png Graphic file (type png)
+<use Resources/dns_poison2.png>
+Package pdftex.def Info: Resources/dns_poison2.png  used on input line 1787.
+(pdftex.def)             Requested size: 137.15541pt x 73.10399pt.
+<Resources/kaminsky.png, id=74, 820.06375pt x 564.1075pt>
+File: Resources/kaminsky.png Graphic file (type png)
+<use Resources/kaminsky.png>
+Package pdftex.def Info: Resources/kaminsky.png  used on input line 1800.
+(pdftex.def)             Requested size: 117.56349pt x 80.86816pt.
+<Resources/dnssec.png, id=75, 1306.8825pt x 276.03125pt>
+File: Resources/dnssec.png Graphic file (type png)
+<use Resources/dnssec.png>
+Package pdftex.def Info: Resources/dnssec.png  used on input line 1837.
+(pdftex.def)             Requested size: 195.93716pt x 41.38184pt.
+<Resources/mail.png, id=76, 1197.47375pt x 666.49pt>
+File: Resources/mail.png Graphic file (type png)
+<use Resources/mail.png>
+Package pdftex.def Info: Resources/mail.png  used on input line 2048.
+(pdftex.def)             Requested size: 195.93716pt x 109.05081pt.
+<Resources/signal_kdf.png, id=77, 316.18124pt x 423.5825pt>
+File: Resources/signal_kdf.png Graphic file (type png)
+<use Resources/signal_kdf.png>
+Package pdftex.def Info: Resources/signal_kdf.png  used on input line 2089.
+(pdftex.def)             Requested size: 78.37366pt x 104.9905pt.
+ [5 <./Resources/dns_poison1.png> <./Resources/dns_poison2.png> <./Resources/ka
+minsky.png> <./Resources/dnssec.png> <./Resources/mail.png>]
+<Resources/signal_dh.png, id=86, 821.0675pt x 606.265pt>
+File: Resources/signal_dh.png Graphic file (type png)
+<use Resources/signal_dh.png>
+Package pdftex.def Info: Resources/signal_dh.png  used on input line 2103.
+(pdftex.def)             Requested size: 156.75032pt x 115.73734pt.
+<Resources/signal_root_chain.png, id=87, 621.32124pt x 550.055pt>
+File: Resources/signal_root_chain.png Graphic file (type png)
+<use Resources/signal_root_chain.png>
+Package pdftex.def Info: Resources/signal_root_chain.png  used on input line 21
+11.
+(pdftex.def)             Requested size: 97.96858pt x 86.72644pt.
+<Resources/signal_message_keys.png, id=88, 620.3175pt x 566.115pt>
+File: Resources/signal_message_keys.png Graphic file (type png)
+<use Resources/signal_message_keys.png>
+Package pdftex.def Info: Resources/signal_message_keys.png  used on input line 
+2119.
+(pdftex.def)             Requested size: 156.75032pt x 143.04872pt.
+<Resources/signal_example.png, id=89, 1163.34625pt x 686.565pt>
+File: Resources/signal_example.png Graphic file (type png)
+<use Resources/signal_example.png>
+Package pdftex.def Info: Resources/signal_example.png  used on input line 2122.
 
-Missing character: There is no ’ ("2019) in font mdbchr8t!
-) [5] 
+(pdftex.def)             Requested size: 176.34224pt x 104.06982pt.
+) [6 <./Resources/signal_kdf.png> <./Resources/signal_dh.png> <./Resources/sign
+al_root_chain.png> <./Resources/signal_message_keys.png> <./Resources/signal_ex
+ample.png>]
+
 enddocument/afterlastpage: lastpage setting LastPage.
 (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 22574 strings out of 476696
- 434220 string characters out of 5806955
- 1927018 words of memory out of 6000000
- 42313 multiletter control sequences out of 15000+600000
- 560023 words of font info for 96 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 84i,14n,89p,431b,1121s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 23538 strings out of 476041
+ 448821 string characters out of 5793173
+ 1951388 words of memory out of 6000000
+ 43417 multiletter control sequences out of 15000+600000
+ 567718 words of font info for 125 fonts, out of 8000000 for 9000
+ 1137 hyphenation exceptions out of 8191
+ 84i,14n,89p,422b,1121s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchb8
+a.pfb></usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chb8t.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri8t.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chrma.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrb0500.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
+Output written on main.pdf (6 pages, 2645799 bytes).
+PDF statistics:
+ 147 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on main.xdv (5 pages, 127532 bytes).
