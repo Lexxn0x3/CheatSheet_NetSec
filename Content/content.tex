@@ -2157,3 +2157,208 @@ DNSSEC can be utilized to enhance other security mechanisms by securely distribu
     \end{itemize}
 \end{itemize}
 
+\section{Anonymous Communication}
+
+\subsection{Why Anonymous Communication?}
+\begin{itemize}
+    \item \textbf{Anonymity:} Unlinkability zwischen Nachricht/Aktion und Identität.
+    \item \textbf{Arten:} Sender-Anonymität, Empfänger-Anonymität.
+    \item \textbf{Anonymitätsset:} Gruppe möglicher, nicht unterscheidbarer Teilnehmer.
+    \item \textbf{Vorteile:} Schutz der Privatsphäre, Meinungsfreiheit, Whistleblowing.
+    \item \textbf{Nachteile:} Missbrauch (illegale Aktivitäten), Performance-Overhead.
+\end{itemize}
+
+\subsection{Dining Cryptographers (DC)}
+\begin{itemize}
+    \item \textbf{Szenario:} Drei Kryptographen möchten wissen, ob einer von ihnen bezahlt hat, ohne die Identität des Zahlenden zu offenbaren.
+    \item \textbf{DC-Protokoll:} 
+    \begin{itemize}
+        \item Erlaubt das anonyme Senden eines Bits („jemand hat bezahlt“ / „niemand hat bezahlt“).
+        \item Informations-theoretische Anonymität.
+        \item Erweiterbar auf größere Gruppen (DC-Netzwerke).
+        \item Hoher Aufwand, benötigt viel Zufälligkeit.
+    \end{itemize}
+    \item \textbf{Dissent:} Anonymes Kommunikationssystem basierend auf DC-Netzwerken, bietet nachweisbare Anonymitätsgarantien.
+\end{itemize}
+\noindent
+\textbf{Prinzip:} Teilnehmer teilen Zufallsbits mit ihren Nachbarn.
+\begin{itemize}
+    \item \textbf{Bit-Berechnung:} XOR(links, rechts, eigene Nachricht).
+    \item \textbf{Ergebnis:} Summe aller Bits (mod 2) zeigt an, ob eine Nachricht gesendet wurde.
+    \item \textbf{Eigenschaften:}
+    \begin{itemize}
+        \item Informations-theoretische Anonymität.
+        \item Erweiterbar auf mehrere Nachrichten (mehrere Runden).
+        \item Hoher Overhead (jeder muss teilnehmen).
+    \end{itemize}
+\end{itemize}
+
+\subsection{MixNets}
+\begin{itemize}
+    \item \textbf{Prinzip:} Nachrichten durchlaufen eine Kette von Mixen (\(M_0, M_1, M_2\)), wobei jede Schicht der Verschlüsselung entfernt wird.
+      \includegraphics[width=.7\columnwidth]{Resources/mixes.png}
+    \item \textbf{Ablauf:} 
+    \[
+    S_0 \to M_0: \text{enc}_{PK_{M_0}}(\text{enc}_{PK_{M_1}}(\text{enc}_{PK_{M_2}}(\text{enc}_{PK_{R_1}}(\text{msg}), R_1), M_2), M_1)
+    \]
+    \item \textbf{Eigenschaften:}
+    \begin{itemize}
+        \item Jedes Mix entschlüsselt nur eine Schicht und leitet die Nachricht weiter.
+        \item Sender bestimmt die Reihenfolge der Mixe.
+        \item Anonymität garantiert, solange mindestens ein Mix ehrlich ist.
+    \end{itemize}
+    \item \textbf{Herausforderungen:}
+    \begin{itemize}
+        \item Mix wartet auf alle Nachrichten → Geschwindigkeit hängt vom langsamsten Sender ab.
+        \item Mix muss vertrauenswürdig sein (kennt Partner, aber nicht den Inhalt).
+        \item Probleme:
+        \begin{itemize}
+            \item Zwei Sender adressieren denselben Empfänger.
+            \item Ein Sender sendet mehrere Nachrichten.
+            \item Ein Empfänger möchte antworten.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Onion Routing und Tor}
+\begin{itemize}
+    \item \textbf{Problem von MixNets:} Zu langsam und ineffizient für Echtzeitkommunikation (z.B. TCP-Verbindungen).
+    \item \textbf{Idee von Onion Routing:} 
+    \begin{itemize}
+        \item Aufbau eines \textbf{Circuits} von Sender zu Empfänger über Onion Routers (ORs).
+        \item Sender wählt OR-Sequenz und baut symmetrische Sitzungsschlüssel mit Diffie-Hellman (DH) auf.
+        \item Jeder OR kennt nur den vorherigen und nächsten OR (First OR kennt Sender, letzter OR den Empfänger).
+        \item Datenübertragung erfolgt in „Schichten“ verschlüsselt (ähnlich MixNets).
+    \end{itemize}
+    \item \textbf{Tor:} Optimierte 2. Generation von Onion Routing.
+    \begin{itemize}
+        \item \textbf{TLS-geschützte Verbindungen} zwischen Relays (Schutz gegen passive Angriffe).
+        \item Keine vollständige Sicherheit gegen Traffic-Analyse (z.B. Timing-Korrelationen).
+        \item Directory Server (DS) zur Veröffentlichung der OR-Public Keys.
+        \item Rate-Limiting und Staukontrolle verhindern Überlastung.
+    \end{itemize}
+    \item \textbf{Tor Hidden Services:}
+    \begin{itemize}
+        \item Server bleibt anonym, zensur- und DoS-resistent.
+        \item Einführungspunkte (IP) und Rendezvous-Punkt (RP) vermitteln Kommunikation über Tor-Circuits.
+    \end{itemize}
+    \item \textbf{Nutzung von Tor:}
+    \begin{itemize}
+        \item Tor Browser, private Fenster (z.B. Brave), lokale Tor-Proxies oder Distributionen wie Tails.
+        \item Achtung bei Betrieb von Tor-Relays, besonders Exit-Nodes (rechtliche Risiken).
+    \end{itemize}
+    \item \textbf{Einschränkungen:}
+    \begin{itemize}
+        \item Keine Sicherheit gegen Tracking auf Anwendungsebene (z.B. Browser-Fingerprinting).
+    \end{itemize}
+\end{itemize}
+
+\section{WireGuard}
+
+\subsection{Wichtige Merkmale}
+\begin{itemize}
+    \item \textbf{Kryptographie:}
+    \begin{itemize}
+        \item Moderne, sichere und geprüfte Kryptographie.
+        \item Festgelegte Cipher-Suites: ChaCha20, Poly1305.
+    \end{itemize}
+    \item \textbf{Kleiner Codeumfang:}
+    \begin{itemize}
+        \item Nur ~4000 Zeilen Code im Linux-Kernel (OpenVPN ~120.000; IPsec ~400.000).
+        \item Weniger Angriffsfläche und leichter auditierbar.
+        \item Verzicht auf externe Kryptobibliotheken wie OpenSSL.
+    \end{itemize}
+    \item \textbf{Linux-Kernel-Integration:}
+    \begin{itemize}
+        \item Seit Kernel 5.6 (2020) fester Bestandteil des Linux-Kernels.
+        \item Kein zusätzlicher Installationsaufwand oder Patches erforderlich.
+        \item Minimaler Overhead, weniger Kontextwechsel als Userspace-VPNs.
+    \end{itemize}
+    \item \textbf{Performance:}
+    \begin{itemize}
+        \item Hohe Leistung bei vielen gleichzeitigen Verbindungen.
+        \item Effizient auf Embedded Systems und einfachen Routern.
+    \end{itemize}
+    \item \textbf{Plattformunterstützung:}
+    \begin{itemize}
+        \item Implementierungen für Windows, macOS, Android, iOS, BSD-Systeme, Fritz!Box etc.
+        \item Einfache Einrichtung durch \texttt{.conf}-Dateien und QR-Codes.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Modi und deren Einsatzarten}
+\begin{itemize}
+    \item \textbf{Tunnel-Modus:}
+    \begin{itemize}
+        \item Der gesamte IP-Verkehr wird durch den VPN-Tunnel geleitet.
+        \item \textbf{Einsatzarten:}
+        \begin{itemize}
+            \item \textbf{Site-to-Site:} 
+            \begin{itemize}
+                \item Verbindung zwischen zwei Netzwerken.
+                \item Beispiel: Firmenstandorte miteinander verbinden, um ein einheitliches Netzwerk zu schaffen.
+            \end{itemize}
+            \item \textbf{Site-to-End:}
+            \begin{itemize}
+                \item Verbindung zwischen einem Netzwerk und einem einzelnen Gerät.
+                \item Beispiel: Remote-Arbeitsplätze mit Zugriff auf Unternehmensressourcen.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Transport-Modus:}
+    \begin{itemize}
+        \item Nur bestimmte Protokolle oder Dienste werden durch den VPN-Tunnel geleitet.
+        \item \textbf{Einsatzarten:}
+        \begin{itemize}
+            \item \textbf{End-to-End:}
+            \begin{itemize}
+                \item Direkte Verbindung zwischen zwei Geräten.
+                \item Beispiel: Peer-to-Peer-Kommunikation, wie Dateiübertragungen oder sichere Anwendungen.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Protokollablauf}
+\begin{itemize}
+    \item \textbf{CryptoKey Routing:}
+    \begin{itemize}
+        \item Jede Netzwerkroute ist an einen öffentlichen Schlüssel gebunden.
+        \item Nur autorisierte Datenpakete werden akzeptiert.
+    \end{itemize}
+    \item \textbf{Handshake:}
+    \begin{itemize}
+        \item Ephemerer Schlüsselaustausch (ECDH mit Curve25519).
+        \item Sitzungsschlüssel durch HKDF abgeleitet; verwendet für ChaCha20 (Verschlüsselung) und Poly1305 (Authentifizierung).
+        \item Optional: Pre-Shared Keys zur zusätzlichen Absicherung.
+    \end{itemize}
+    \item \textbf{Datenübertragung:}
+    \begin{itemize}
+        \item Pakete werden mit dem Sitzungsschlüssel verschlüsselt und enthalten einen WireGuard-Header (inkl. Typ, Key-ID, Counter, Payload, MAC).
+    \end{itemize}
+    \item \textbf{Key Rotation:}
+    \begin{itemize}
+        \item Schlüsselwechsel alle 120 Sekunden oder bei Erreichen von Limits (Counter/Data).
+        \item Forward Secrecy durch Zeit- und Ressourcengesteuerte Schlüsselrotation.
+    \end{itemize}
+    \item \textbf{Reactivation:}
+    \begin{itemize}
+        \item Verbindung wird bei Inaktivität oder Unterbrechung neu aufgebaut (Handshake).
+        \item Counter und alte Schlüssel werden aktualisiert.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Besonderheiten}
+\begin{itemize}
+    \item \textbf{Keep-Alive:}
+    \begin{itemize}
+        \item Hält Verbindungen aktiv, z. B. bei NAT oder mobilen Netzwerken.
+        \item Konfigurierbar mit \texttt{PersistentKeepalive}.
+    \end{itemize}
+    \item \textbf{Sicherheit:}
+    \begin{itemize}
+        \item Schutz vor Replay-Angriffen durch Message Counter.
+        \item Verschlüsselung aller Pakete, minimale Angriffsfläche durch kompakten Code.
+    \end{itemize}
+\end{itemize}
+
