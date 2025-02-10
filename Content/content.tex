@@ -2362,3 +2362,256 @@ DNSSEC can be utilized to enhance other security mechanisms by securely distribu
     \end{itemize}
 \end{itemize}
 
+\section{Cyberangriffsmuster und -modelle}
+
+\subsection{Attack Patterns}
+\textbf{Definition:} Standardisierte Beschreibungen von Angriffstechniken, die zur Identifikation und Kategorisierung von Bedrohungen dienen.\\
+\textbf{Historie:} Erste Cyberangriffe (Brain-Virus 1986, Morris-Wurm 1988) führten zur Notwendigkeit von Angriffsmuster-Klassifikationen. \\
+\textbf{CAPEC:} \textit{Common Attack Pattern Enumeration and Classification}, entwickelt von MITRE seit 2007.
+
+\subsection{Cyber Kill Chain (CKC)}
+Ein Modell zur Beschreibung eines Cyberangriffs in sieben Phasen:
+\begin{itemize}
+    \item \textbf{Aufklärung (Reconnaissance):} Sammlung von Informationen über das Ziel (OSINT, Netzwerkscans).
+    \item \textbf{Bewaffnung (Weaponization):} Erstellung schädlicher Nutzlasten (z.B. Exploits, Phishing-Dokumente).
+    \item \textbf{Zustellung (Delivery):} Verbreitung der Schadsoftware (E-Mails, Drive-by-Downloads, USB-Sticks).
+    \item \textbf{Ausnutzung (Exploitation):} Nutzung von Schwachstellen zur Code-Ausführung oder Privilegienerweiterung.
+    \item \textbf{Installation (Installation):} Persistente Malware (Backdoors, Remote Access Trojaner).
+    \item \textbf{Kommando und Kontrolle (C2):} Fernsteuerung kompromittierter Systeme über C2-Server.
+    \item \textbf{Zielerreichung (Actions on Objectives):} Exfiltration, Erpressung oder Sabotage von Daten.
+\end{itemize}
+
+\subsection{MITRE ATT\&CK Framework}
+\textbf{Beschreibung:} Seit 2015 öffentlich zugängliche Wissensbasis zur Dokumentation von Angriffstaktiken (Tactics) und Techniken (Techniques).\\
+\textbf{Struktur:} 
+\begin{itemize}
+    \item Matrizen für verschiedene Plattformen (Enterprise, Mobile, ICS).
+    \item \textbf{Tactic:} Ziel des Angriffs (z.B. Privilegienerweiterung).
+    \item \textbf{Technique:} Methode zur Erreichung des Ziels (z.B. Pass-the-Hash).
+\end{itemize}
+
+\subsection{Anwendungen von MITRE ATT\&CK}
+\begin{itemize}
+    \item Verbesserung der Cyberabwehr durch Angriffsanalyse.
+    \item Identifikation von Angreifergruppen anhand ihrer Techniken.
+    \item Red- und Blue-Team-Übungen zur Angriffserkennung.
+    \item Nutzung von Simulationstools wie \textit{Caldera}.
+    \item Bessere Kommunikation mit Mitre codes (Publication, Virus total etc.)
+\end{itemize}
+
+\subsection{Weiterentwicklung von MITRE ATT\&CK}
+\begin{itemize}
+    \item Regelmäßige Updates durch Community-Beiträge.
+    \item Verknüpfung mit CVEs zur besseren Bedrohungsbewertung.
+    \item Erweiterung der Erkennungsmechanismen für ICS und Mobile Security.
+    \item Fokus Social Engineering
+\end{itemize}
+
+\section{Zero Trust Networks}
+
+\subsection{Definition}
+\textbf{Zero Trust} ist ein Sicherheitsmodell, das auf dem „Assume Breach“-Prinzip basiert. Es minimiert Rechte für alle Entitäten in einer Infrastruktur und setzt auf kontinuierliche Überprüfung und Validierung.
+
+\subsection{Kernprinzipien}
+\begin{itemize}
+    \item \textbf{Kontinuierliche Überwachung und Validierung} aller Nutzer, Geräte und Anwendungen.
+    \item \textbf{Prinzip der minimalen Rechtevergabe}, um die Angriffsfläche zu minimieren.
+    \item \textbf{Annahme eines Datenlecks} als Standardannahme.
+\end{itemize}
+
+\subsection{Perimeter- vs. Zero Trust Modell}
+\textbf{Perimeter-Modell:} Vertrauen basiert auf Netzwerkgrenzen, Nutzer innerhalb des Netzwerks gelten als vertrauenswürdig.\\
+\textbf{Zero Trust Modell:} Kein implizites Vertrauen, Authentifizierung und Autorisierung erfolgen kontinuierlich für jede Anfrage.
+
+\subsection{Funktionsweise von Zero Trust}
+\begin{itemize}
+    \item \textbf{Authentifizierung:} Identitätsprüfung durch:
+    \begin{itemize}
+        \item Etwas, das man weiß (Passwort)
+        \item Etwas, das man besitzt (Token, Smartcard)
+        \item Etwas, das man ist (Biometrie)
+        \item Verhaltenserkennung
+    \end{itemize}
+    \item \textbf{Single Sign-On (SSO):} Nutzung von Protokollen wie Kerberos, OAuth, OpenID Connect (OIDC).
+    \item \textbf{Gerätevertrauen:} Überprüfung durch Secure Boot, TPM, Gerätezertifikate.
+    \item \textbf{Sichere Kommunikation:} Nutzung von TLS (Client-Server) und IPSec (Server-Server).
+    \item \textbf{Erstpaket-Filterung (Bootstrapping Trust):} Sicherheitsprüfung bereits bei der ersten Netzwerkkommunikation.
+    \item \textbf{Dynamische Richtliniendurchsetzung:} Zugriffskontrolle basierend auf Echtzeit-Analysen und Risiko-Bewertungen.
+\end{itemize}
+
+\subsection{Praktische Implementierungen}
+\begin{itemize}
+    \item \textbf{BeyondCorp (Google):} Nutzer- und Gerätetrust unabhängig vom Standort.
+    \item \textbf{Microsoft Zero Trust Architektur:} Integration in Azure AD, Intune und Defender.
+    \item \textbf{Cloudflare Zero Trust:} Kombination aus SASE und Zero Trust für Unternehmensnetzwerke.
+\end{itemize}
+
+\subsection{Vorteile von Zero Trust}
+\begin{itemize}
+    \item Schutz vor Insider-Bedrohungen und kompromittierten Konten.
+    \item Granulare Zugriffskontrolle und geringere Angriffsfläche.
+    \item Verbesserte Sichtbarkeit und Auditierbarkeit des Netzwerkverkehrs.
+\end{itemize}
+
+\section{Network Vulnerability Scanning}
+
+\subsection{Definition}
+\textbf{Vulnerability Scanning} ist der Prozess der Identifikation von Schwachstellen in Netzwerken, Betriebssystemen und Anwendungen durch automatisierte Tools.
+
+\subsection{Wichtige Schwachstellen-Scanner}
+\begin{itemize}
+    \item \textbf{Nmap} (Network Mapper): Open-Source-Netzwerkscanner (1997, Gordon Lyon). Funktionen:
+    \begin{itemize}
+        \item Port-Scanning
+        \item Betriebssystem- und Dienstversionserkennung
+        \item Netzwerk-Scanning
+    \end{itemize}
+    \item \textbf{Nessus}: Kommerzieller Schwachstellenscanner (1998, Tenable). Funktionen:
+    \begin{itemize}
+        \item Scans für OS, Netzwerkgeräte und Webanwendungen
+        \item Compliance- und Konfigurationsanalysen
+        \item Detaillierte Berichte mit Handlungsempfehlungen
+    \end{itemize}
+    \item \textbf{OpenVAS} (Open Vulnerability Assessment Scanner): Open-Source-Schwachstellenscanner (2006, Greenbone). Funktionen:
+    \begin{itemize}
+        \item Authentifizierte und nicht-authentifizierte Scans
+        \item Schwachstellenmanagement und Berichterstellung
+    \end{itemize}
+    \item \textbf{Zmap}: Schneller Open-Source-Netzwerkscanner (2013). Funktionen:
+    \begin{itemize}
+        \item Internetweite Netzwerkscans in Rekordzeit
+        \item Anpassbare Scan-Raten
+    \end{itemize}
+    \item \textbf{SAINT} (Security Administrator's Integrated Network Tool): Kommerzieller Netzwerkscanner (1998). Funktionen:
+    \begin{itemize}
+        \item Schwachstellenscans und Compliance-Analysen
+        \item Zentralisierte Verwaltung
+    \end{itemize}
+    \item \textbf{SATAN} (Security Administrator Tool for Analyzing Networks): Netzwerksicherheits-Analysetool (1995). Funktionen:
+    \begin{itemize}
+        \item Automatisierte und Remote-Scans
+        \item Anpassbare Scans und detaillierte Berichterstellung
+    \end{itemize}
+    \item \textbf{Metasploit}: Open-Source-Penetrationstest-Framework (2003, Harley David Moore). Funktionen:
+    \begin{itemize}
+        \item Sammlung von Exploits für Sicherheitsanalysen
+        \item Payload-Generierung für verschiedene Angriffsvektoren
+        \item Post-Exploitation-Funktionen
+    \end{itemize}
+\end{itemize}
+
+\subsection{Das OSI-Schichtenmodell und Scanning}
+\begin{itemize}
+    \item Verschiedene Scanner arbeiten auf unterschiedlichen OSI-Schichten:
+    \begin{itemize}
+        \item \textbf{Netzwerkscans (Layer 3-4)}: Nmap, Zmap
+        \item \textbf{Schwachstellenscans (Layer 4-7)}: OpenVAS, Nessus, Burp Suite
+        \item \textbf{Exploit-Tests (Layer 7)}: Metasploit
+    \end{itemize}
+\end{itemize}
+
+\subsection{Realität vs. Testumgebung}
+\textbf{Testumgebung:}
+\begin{itemize}
+    \item Kontrollierte Bedingungen
+    \item Vorhersehbare Ergebnisse
+    \item Vereinfachte Analysen
+\end{itemize}
+\noindent
+\textbf{Echte Netzwerke:}
+\begin{itemize}
+    \item Komplexe Netzwerklandschaften
+    \item Unvorhersehbare Ergebnisse
+    \item Unerwartete Probleme durch Sicherheitsmechanismen
+\end{itemize}
+
+\subsection{Herausforderungen und False Positives}
+\begin{itemize}
+    \item Nicht jede gemeldete Schwachstelle ist real.
+    \item Beispiel: Eine Webanwendung wird als \textit{SQL-Injection-anfällig} erkannt, aber ein manueller Test mit \textit{SQLmap} bestätigt dies nicht.
+    \item Lösung: Kombination von automatischen Scans mit manuellen Überprüfungen.
+\end{itemize}
+
+\section{Wireless IoT Communication Security}
+
+\subsection{Zigbee – Grundlagen}
+\textbf{Zigbee} ist ein drahtloses Protokoll auf Basis des \textbf{IEEE 802.15.4-Standards} für energieeffiziente, kurze Kommunikationsstrecken, häufig in IoT-Geräten.\\
+\textbf{Hauptmerkmale:}
+\begin{itemize}
+    \item Niedriger Energieverbrauch
+    \item Netzwerktopologien: \textbf{Stern, Baum, Mesh}
+    \item Geeignet für Sensoren, Smart Home, Industrieautomation
+\end{itemize}
+
+\subsection{Zigbee-Netzwerkarchitektur}
+\begin{itemize}
+    \item \textbf{Koordinator:} Erstellt und verwaltet das Netzwerk, verteilt Schlüssel.
+    \item \textbf{Router:} Leitet Daten weiter, keine Schlüsselverwaltung.
+    \item \textbf{Endgerät:} Sensoren, Aktoren, oft energieeffizient (Schlafmodus).
+\end{itemize}
+
+\subsection{Sicherheitsmodelle in Zigbee}
+\begin{itemize}
+    \item \textbf{Verteiltes Sicherheitsmodell:} Jeder Knoten verwaltet eigene Schlüssel.
+    \item \textbf{Zentralisiertes Sicherheitsmodell:} Vertrauenscenter verwaltet Schlüssel.
+    \item \textbf{Sicherheitsmechanismen:}
+    \begin{itemize}
+        \item AES-128-Bit-Verschlüsselung
+        \item Integritätsprüfung durch Message Integrity Codes (MIC)
+        \item Authentifizierungsmechanismen
+    \end{itemize}
+\end{itemize}
+
+\subsection{Haupt-Sicherheitsrisiken bei Zigbee}
+\begin{itemize}
+    \item \textbf{Schwache Authentifizierung:} Standardmäßig voreingestellte, schwache Schlüssel.
+    \item \textbf{Fehlende Zugangskontrolle:} Unzureichender Schutz der Schlüssel.
+    \item \textbf{Geräteübernahme:} Durch physischen oder Remote-Zugriff.
+\end{itemize}
+
+\subsection{Allgemeine Angriffsarten auf IoT-Netzwerke}
+\begin{itemize}
+    \item \textbf{Replay-Angriff:} Aufgezeichnete Daten erneut senden.
+    \item \textbf{Spoofing:} Identität fälschen.
+    \item \textbf{Jamming:} Kommunikation stören.
+    \item \textbf{Man-in-the-Middle (MITM):} Abfangen und Manipulieren von Daten.
+\end{itemize}
+
+\subsection{Beispiele für Sicherheitsvorfälle}
+\begin{itemize}
+    \item \textbf{Mirai-Botnet:} DDoS-Angriffe über unsichere IoT-Geräte.
+    \item \textbf{Angriffe auf Zigbee-Geräte:} Netzwerkschlüssel während des Pairings gestohlen.
+    \item \textbf{SILEX-Malware:} Löscht Konfigurationsdaten von IoT-Geräten.
+\end{itemize}
+
+\subsection{Lösungsansätze und Best Practices}
+\begin{itemize}
+    \item \textbf{Starke Verschlüsselung und Schlüsselverwaltung:}
+    \begin{itemize}
+        \item AES-256-Verschlüsselung
+        \item Hardware-Sicherheitsmodule (HSM)
+        \item Diffie-Hellman für sicheren Schlüsselaustausch
+    \end{itemize}
+    \item \textbf{Authentifizierungs- und Zugangskontrollen:}
+    \begin{itemize}
+        \item Multi-Faktor-Authentifizierung (MFA)
+        \item Rollenbasierte Zugangskontrolle (RBAC)
+    \end{itemize}
+    \item \textbf{Netzwerksegmentierung und Firewalls:}
+    \begin{itemize}
+        \item VLANs zur Trennung von IoT- und Unternehmensnetzwerken
+        \item Dedizierte IoT-Firewalls
+    \end{itemize}
+    \item \textbf{Regelmäßige Updates und Patches:}
+    \begin{itemize}
+        \item Automatische Updates
+        \item Rollback-Mechanismen zur Wiederherstellung nach fehlgeschlagenen Updates
+    \end{itemize}
+    \item \textbf{Zukunftstrends in der IoT-Sicherheit:}
+    \begin{itemize}
+        \item Hardwarebasierte Sicherheitslösungen (TPM, Secure Elements)
+        \item Blockchain zur sicheren Geräteidentität
+        \item Künstliche Intelligenz (KI) für Angriffserkennung
+    \end{itemize}
+\end{itemize}
+
